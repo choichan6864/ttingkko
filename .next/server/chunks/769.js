@@ -261,7 +261,7 @@ function ToolBar({ onClickPlusButton  }) {
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default().dynamic([
             [
-                "7fede376adb27f15",
+                "3ba42aaf8114ffd1",
                 [
                     fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"
                 ]
@@ -287,12 +287,12 @@ function ToolBar({ onClickPlusButton  }) {
                 title: "이미지 추가"
             }),
             react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                id: "7fede376adb27f15",
+                id: "3ba42aaf8114ffd1",
                 dynamic: [
                     fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"
                 ],
                 children: `.tool-bar.__jsx-style-dynamic-selector{height:40px;${fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"}
-            background-color:rgb(0,0, 200);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;z-index:1;max-width:1e3px;width:100%;top:90px}`
+            background-color:rgb(50, 50, 50);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;z-index:1;max-width:1e3px;width:100%;top:90px}`
             })
         ]
     });

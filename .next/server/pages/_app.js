@@ -16,16 +16,19 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9816);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1664);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _search_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1351);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6022);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6907);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_search_input__WEBPACK_IMPORTED_MODULE_4__, _store_store__WEBPACK_IMPORTED_MODULE_6__]);
-([_search_input__WEBPACK_IMPORTED_MODULE_4__, _store_store__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5675);
+/* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_image__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1664);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _search_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1351);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6022);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(6907);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_search_input__WEBPACK_IMPORTED_MODULE_5__, _store_store__WEBPACK_IMPORTED_MODULE_7__]);
+([_search_input__WEBPACK_IMPORTED_MODULE_5__, _store_store__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -37,7 +40,7 @@ function LinkButton({ href , text  }) {
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         className: "jsx-f24522debe1b987b",
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                 href: href,
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                     className: "jsx-f24522debe1b987b",
@@ -52,36 +55,42 @@ function LinkButton({ href , text  }) {
     });
 }
 function NavBar() {
-    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
-    const [activeSearchInp, setSearchInp] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
-    const headerData = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)((state)=>{
+    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
+    const [activeSearchInp, setSearchInp] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
+    const headerData = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)((state)=>{
         return {
             login: state.activeLogin,
             loginLink: state.loginLink
         };
     });
     const setSearchInpToFalse = ()=>setSearchInp(false);
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        dispatch((0,_store_store__WEBPACK_IMPORTED_MODULE_6__/* .getUserInfo */ .b)());
+    (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(()=>{
+        dispatch((0,_store_store__WEBPACK_IMPORTED_MODULE_7__/* .getUserInfo */ .b)());
     }, []);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("header", {
-                className: "jsx-7f349a6f44e8b524",
+                className: "jsx-5f11b4353334625f",
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
-                        className: "jsx-7f349a6f44e8b524",
+                        className: "jsx-5f11b4353334625f",
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                 href: "/",
                                 target: "_self",
                                 legacyBehavior: true,
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                    className: "jsx-7f349a6f44e8b524" + " " + "logo"
+                                    className: "jsx-5f11b4353334625f" + " " + "logo",
+                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                        width: 90,
+                                        alt: "",
+                                        height: 90,
+                                        src: "/logo.png"
+                                    })
                                 })
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                                className: "jsx-7f349a6f44e8b524" + " " + "link-list",
+                                className: "jsx-5f11b4353334625f" + " " + "link-list",
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
                                         href: "/list",
@@ -101,19 +110,19 @@ function NavBar() {
                                 ]
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
-                                className: "jsx-7f349a6f44e8b524",
+                                className: "jsx-5f11b4353334625f",
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                                    className: "jsx-7f349a6f44e8b524",
+                                    className: "jsx-5f11b4353334625f",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                             onClick: ()=>setSearchInp(true),
-                                            className: "jsx-7f349a6f44e8b524" + " " + "active-search-input",
+                                            className: "jsx-5f11b4353334625f" + " " + "active-search-input",
                                             children: "검색"
                                         }),
-                                        headerData.login ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                        headerData.login ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                             href: "/write-person",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                className: "jsx-7f349a6f44e8b524" + " " + "write-pesron",
+                                                className: "jsx-5f11b4353334625f" + " " + "write-pesron",
                                                 children: "쓰기"
                                             })
                                         }) : null
@@ -123,12 +132,12 @@ function NavBar() {
                         ]
                     }),
                     react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                        id: "7f349a6f44e8b524",
-                        children: '.active-search-input.jsx-7f349a6f44e8b524{height:90px;width:4rem;cursor:pointer;background-color:rgb(0,0,0,0)}.logo.jsx-7f349a6f44e8b524{background-image:url("/logo.png");width:160px;height:90px}li.jsx-7f349a6f44e8b524{display:inline-block}.write-pesron.jsx-7f349a6f44e8b524{height:90px;width:4rem;cursor:pointer;color:white;background-color:rgb(0,0,0,0)}header.jsx-7f349a6f44e8b524{height:90px;position:fixed;background-color:rgb(0,0,150);border-bottom:1px solid black;top:0;z-index:5;width:100%}nav.jsx-7f349a6f44e8b524{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:100%;margin:auto;max-width:1280px}.link-list.jsx-7f349a6f44e8b524{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}'
+                        id: "5f11b4353334625f",
+                        children: ".active-search-input.jsx-5f11b4353334625f{height:90px;width:4rem;cursor:pointer;background-color:rgb(0,0,0,0)}.logo.jsx-5f11b4353334625f{width:90px;height:90px}li.jsx-5f11b4353334625f{display:inline-block}.write-pesron.jsx-5f11b4353334625f{height:90px;width:4rem;cursor:pointer;color:white;background-color:rgb(0,0,0,0)}header.jsx-5f11b4353334625f{height:90px;position:fixed;background-color:rgb(64,64,64);border-bottom:1px solid black;top:0;z-index:5;width:100%}nav.jsx-5f11b4353334625f{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:100%;margin:auto;max-width:1280px}.link-list.jsx-5f11b4353334625f{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}"
                     })
                 ]
             }),
-            activeSearchInp ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_search_input__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
+            activeSearchInp ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_search_input__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
                 event: setSearchInpToFalse
             }) : null
         ]
@@ -282,21 +291,21 @@ function App({ Component , pageProps  }) {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_navBar__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {}),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", {
-                className: "jsx-cb9f35dbfc4a2e9f",
+                className: "jsx-c13e756e1cba12f0",
                 children: [
                     router.pathname !== "/" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
-                        className: "jsx-cb9f35dbfc4a2e9f",
+                        className: "jsx-c13e756e1cba12f0",
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                             ...pageProps,
-                            className: "jsx-cb9f35dbfc4a2e9f" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
+                            className: "jsx-c13e756e1cba12f0" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
                         })
                     }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                         ...pageProps,
-                        className: "jsx-cb9f35dbfc4a2e9f" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
+                        className: "jsx-c13e756e1cba12f0" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
                     }),
                     react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                        id: "cb9f35dbfc4a2e9f",
-                        children: "main.jsx-cb9f35dbfc4a2e9f{width:100%}section.jsx-cb9f35dbfc4a2e9f{max-width:1e3px;padding:48px 3rem 3rem 3rem;background-color:rgb(0,0,125);min-height:100vh;margin:auto}"
+                        id: "c13e756e1cba12f0",
+                        children: "main.jsx-c13e756e1cba12f0{width:100%;min-height:100vh;background-color:rgb(80,80,80)}section.jsx-c13e756e1cba12f0{max-width:1e3px;padding:48px 3rem 3rem 3rem;min-height:100vh;margin:auto}"
                     })
                 ]
             })

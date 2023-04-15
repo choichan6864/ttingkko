@@ -22,7 +22,7 @@ export default function ToolBar({onClickPlusButton}:{onClickPlusButton: () => vo
           .tool-bar {
             height: 40px;
             ${fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"}
-            background-color:rgb(0,0, 200);
+            background-color:rgb(50, 50, 50);
             display: flex;
             z-index: 1;
             max-width: 1000px;

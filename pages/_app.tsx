@@ -22,11 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
           {`
             main {
               width: 100%;
+              min-height:100vh;
+              background-color: rgb(80, 80, 80);
             }
             section {
               max-width: 1000px;
               padding: 48px 3rem 3rem 3rem;
-              background-color: rgb(0, 0, 125);
               min-height: 100vh;
               margin: auto;
             }

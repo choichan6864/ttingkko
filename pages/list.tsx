@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -49,6 +50,9 @@ export default function List() {
   return (
     <>
       <h1>최근 변경</h1>
+      <Head>
+        <title>List</title>
+      </Head>
       {listData
         .slice(0)
         .reverse()
@@ -95,4 +99,3 @@ export default function List() {
     </>
   );
 }
-

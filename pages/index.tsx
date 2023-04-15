@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import { useEffect } from "react";
 
 function SearchWordWindow() {
@@ -44,7 +45,12 @@ function SearchWordWindow() {
 export default function Home() {
   return (
     <div className="main-of-home">
-      <div className="div-of-main">
+      <Head>
+        <title>
+          Home
+        </title>
+      </Head>
+      {/* <div className="div-of-main">
         <h1>전세계 1위 검색어</h1>
         <SearchWordWindow />
       </div>
@@ -74,7 +80,7 @@ export default function Home() {
             background-color: red;
           }
         `}
-      </style>
+      </style> */}
     </div>
   );
 }

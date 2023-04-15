@@ -48,7 +48,9 @@ export default function NavBar() {
       <header>
         <nav>
           <Link href={"/"} target="_self" legacyBehavior>
-            <a className="logo"></a>
+            <a className="logo">
+              <Image width={90} alt="" height={90} src="/logo.png"></Image>
+            </a>
           </Link>
           <ul className="link-list">
             <LinkButton href="/list" text="목록" />
@@ -83,8 +85,7 @@ export default function NavBar() {
             background-color: rgb(0, 0, 0, 0);
           }
           .logo {
-            background-image: url("/logo.png");
-            width: 160px;
+            width: 90px;
             height: 90px;
           }
           li {
@@ -101,7 +102,7 @@ export default function NavBar() {
             height: 90px;
             // background: linear-gradient(to right bottom, red, blue);
             position: fixed;
-            background-color: rgb(0, 0, 150);
+            background-color: rgb(64, 64, 64);
             border-bottom: 1px solid black;
             top: 0;
             z-index: 5;

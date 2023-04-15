@@ -16,14 +16,17 @@ __webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __we
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9816);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9648);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1664);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _search_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1351);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_2__, _search_input__WEBPACK_IMPORTED_MODULE_5__]);
-([axios__WEBPACK_IMPORTED_MODULE_2__, _search_input__WEBPACK_IMPORTED_MODULE_5__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1664);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6689);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _search_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1351);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6022);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6907);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_search_input__WEBPACK_IMPORTED_MODULE_4__, _store_store__WEBPACK_IMPORTED_MODULE_6__]);
+([_search_input__WEBPACK_IMPORTED_MODULE_4__, _store_store__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -34,7 +37,7 @@ function LinkButton({ href , text  }) {
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
         className: "jsx-f24522debe1b987b",
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
                 href: href,
                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                     className: "jsx-f24522debe1b987b",
@@ -49,17 +52,17 @@ function LinkButton({ href , text  }) {
     });
 }
 function NavBar() {
-    const [headerData, setHeaderData] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)({
-        login: false,
-        loginLink: "/"
+    const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
+    const [activeSearchInp, setSearchInp] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false);
+    const headerData = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)((state)=>{
+        return {
+            login: state.activeLogin,
+            loginLink: state.loginLink
+        };
     });
-    const [activeSearchInp, setSearchInp] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
     const setSearchInpToFalse = ()=>setSearchInp(false);
-    (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(()=>{
-        (async ()=>{
-            const { data  } = await axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("/api/header-data");
-            setHeaderData(data);
-        })();
+    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
+        dispatch((0,_store_store__WEBPACK_IMPORTED_MODULE_6__/* .getUserInfo */ .b)());
     }, []);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
@@ -69,7 +72,7 @@ function NavBar() {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
                         className: "jsx-7f349a6f44e8b524",
                         children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
                                 href: "/",
                                 target: "_self",
                                 legacyBehavior: true,
@@ -107,13 +110,13 @@ function NavBar() {
                                             className: "jsx-7f349a6f44e8b524" + " " + "active-search-input",
                                             children: "검색"
                                         }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
+                                        headerData.login ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
                                             href: "/write-person",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                                 className: "jsx-7f349a6f44e8b524" + " " + "write-pesron",
                                                 children: "쓰기"
                                             })
-                                        })
+                                        }) : null
                                     ]
                                 })
                             })
@@ -125,7 +128,7 @@ function NavBar() {
                     })
                 ]
             }),
-            activeSearchInp ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_search_input__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {
+            activeSearchInp ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_search_input__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {
                 event: setSearchInpToFalse
             }) : null
         ]
@@ -260,8 +263,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_global_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_global_css__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1853);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_navBar__WEBPACK_IMPORTED_MODULE_2__]);
-_components_navBar__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6022);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(6907);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_navBar__WEBPACK_IMPORTED_MODULE_2__, _store_store__WEBPACK_IMPORTED_MODULE_6__]);
+([_components_navBar__WEBPACK_IMPORTED_MODULE_2__, _store_store__WEBPACK_IMPORTED_MODULE_6__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
 
 
 
@@ -269,7 +277,8 @@ _components_navBar__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies_
 
 function App({ Component , pageProps  }) {
     const router = (0,next_router__WEBPACK_IMPORTED_MODULE_4__.useRouter)();
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_redux__WEBPACK_IMPORTED_MODULE_5__.Provider, {
+        store: _store_store__WEBPACK_IMPORTED_MODULE_6__/* .store */ .h,
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_navBar__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {}),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", {
@@ -300,10 +309,68 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 6907:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "b": () => (/* binding */ getUserInfo),
+/* harmony export */   "h": () => (/* binding */ store)
+/* harmony export */ });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5184);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9648);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_1__]);
+axios__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+const getUserInfo = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("slice/userInfo", async ()=>{
+    const { data: userInfo  } = await axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/userInfo");
+    return userInfo;
+});
+const slice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+    name: "slice",
+    initialState: {
+        activeLogin: false,
+        loginLink: "/",
+        userInfo: {
+            id: "",
+            email: ""
+        }
+    },
+    reducers: {},
+    extraReducers: (builder)=>{
+        builder.addCase(getUserInfo.fulfilled, (state, action)=>{
+            const { user , loginLink  } = action.payload;
+            if (user) {
+                state.userInfo = user;
+                state.activeLogin = true;
+            }
+            state.loginLink = loginLink;
+        });
+    }
+});
+const store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.configureStore)(slice);
+
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 9605:
 /***/ (() => {
 
 
+
+/***/ }),
+
+/***/ 5184:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("@reduxjs/toolkit");
 
 /***/ }),
 
@@ -464,6 +531,14 @@ module.exports = require("next/router");
 
 "use strict";
 module.exports = require("react");
+
+/***/ }),
+
+/***/ 6022:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-redux");
 
 /***/ }),
 

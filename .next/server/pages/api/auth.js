@@ -95,6 +95,7 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axio
             id: user.username,
             email: user.email
         };
+        console.log(`정보: id:${user.username} email:${user.email},  세션: ${req.session.user}`);
         await req.session.save();
     }
     res.redirect("/");

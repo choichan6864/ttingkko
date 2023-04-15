@@ -1,19 +1,19 @@
 {
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/api/auth": "pages/api/auth.js",
   "/api/bring-lists": "pages/api/bring-lists.js",
   "/api/contents/[id]": "pages/api/contents/[id].js",
   "/api/edit": "pages/api/edit.js",
   "/api/header-data": "pages/api/header-data.js",
   "/api/search/[text]": "pages/api/search/[text].js",
-  "/_error": "pages/_error.js",
   "/api/user-info": "pages/api/user-info.js",
-  "/contents/[id]": "pages/contents/[id].html",
   "/api/write": "pages/api/write.js",
+  "/contents/[id]": "pages/contents/[id].html",
   "/contents/edit/[id]": "pages/contents/edit/[id].html",
   "/": "pages/index.html",
-  "/write-person": "pages/write-person.html",
   "/list": "pages/list.html",
+  "/write-person": "pages/write-person.html",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html"
 }

@@ -47,6 +47,7 @@ export default withIronSessionApiRoute(async function Handler(
       );
     }
     req.session.user = { id: user.username, email: user.email };
+    console.log(`정보: id:${user.username} email:${user.email},  세션: ${req.session.user}`);
     await req.session.save();
   }
   res.redirect("/");

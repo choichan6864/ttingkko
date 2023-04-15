@@ -6,7 +6,7 @@ export default withIronSessionApiRoute(async function Handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-    console.log(`세션: ${req.session}`);
+    console.log(`세션: ${req.session.user}`);
   res.send({
     login: req.session !== undefined && req.session.user !== undefined,
     loginLink: process.env.API_ENDPOINT,

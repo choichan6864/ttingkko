@@ -27,7 +27,7 @@ iron_session_next__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,iron_session_next__WEBPACK_IMPORTED_MODULE_0__/* .withIronSessionApiRoute */ .n)(async function Handler(req, res) {
-    console.log(`세션: ${req.session}`);
+    console.log(`세션: ${req.session.user}`);
     res.send({
         login: req.session !== undefined && req.session.user !== undefined,
         loginLink: process.env.API_ENDPOINT
@@ -48,7 +48,10 @@ __webpack_async_result__();
 const options = {
     cookieName: "ue-if",
     password: process.env.COOKIE_PASSWD,
-    ttl: 60 * 60 * 24 * 30
+    ttl: 60 * 60 * 24 * 30,
+    cookieOptions: {
+        secure: "production" === "production"
+    }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (options);
 

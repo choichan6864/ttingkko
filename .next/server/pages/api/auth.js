@@ -115,7 +115,10 @@ __webpack_async_result__();
 const options = {
     cookieName: "ue-if",
     password: process.env.COOKIE_PASSWD,
-    ttl: 60 * 60 * 24 * 30
+    ttl: 60 * 60 * 24 * 30,
+    cookieOptions: {
+        secure: "production" === "production"
+    }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (options);
 

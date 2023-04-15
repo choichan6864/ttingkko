@@ -1,7 +1,11 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/contents/[id]": "pages/contents/[id].html",
+  "/contents/edit/[id]": "pages/contents/edit/[id].html",
+  "/": "pages/index.html",
+  "/list": "pages/list.html",
+  "/write-person": "pages/write-person.html",
   "/_document": "pages/_document.js",
-  "/write-person": "pages/write-person.js",
-  "/": "pages/index.js"
+  "/404": "pages/404.html"
 }

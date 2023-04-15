@@ -135,7 +135,7 @@ function NavBar() {
             setHeaderData(data);
         })();
     }, []);
-    // console.log()
+    console.log(headerData);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("header", {
         className: "jsx-e667141d0a767667",
         children: [

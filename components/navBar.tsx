@@ -146,7 +146,7 @@ export default function NavBar() {
       setHeaderData(data);
     })();
   }, []);
-  // console.log()
+  console.log(headerData);
   return (
     <header>
       <nav>

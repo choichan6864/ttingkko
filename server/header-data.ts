@@ -14,8 +14,6 @@ declare module "express-session" {
 
 router.get("/api/header-data", async (req: Request<SessionData>, res: Response) => {
   res.send({
-    login: req.session.user !== undefined,
-    loginLink: process.env.API_ENDPOINT,
   });
 });
 

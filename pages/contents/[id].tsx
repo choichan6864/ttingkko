@@ -55,7 +55,7 @@ export default function Contents() {
                 <span className="listText">{data.listText}</span>
               </h1>
               <hr />
-              <div className="contents">{data.contents}</div>
+              <div className="contents" dangerouslySetInnerHTML={{__html:data.contents}}></div>
             </div>
           );
         }

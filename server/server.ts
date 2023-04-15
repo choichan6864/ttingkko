@@ -20,6 +20,7 @@ const handle = app.getRequestHandler();
 const auth = require("./auth");
 const headerData = require("./header-data");
 const search = require("./search");
+const userInfo = require("./userInfo");
 
 
 const sessionStore = new MySQlStore({
@@ -68,7 +69,7 @@ app.prepare().then(() => {
     );
     res.status(200).redirect("/");
   })
-
+  server.use(userInfo);
   server.get("/api/contents/:id", async (req:Request, res:Response) => {
     const [rows] = await connection.query(
       `SELECT * FROM contents WHERE contentsId = ${req.params.id}`

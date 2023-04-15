@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import SearchInput from "./search-input";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "@/store/store";
 
 function LinkButton({ href, text }: { href: string; text: string }) {
   return (
@@ -30,17 +32,16 @@ function LinkButton({ href, text }: { href: string; text: string }) {
 }
 
 export default function NavBar() {
-  const [headerData, setHeaderData] = useState({
-    login: false,
-    loginLink: "/",
-  });
+  const dispatch = useDispatch<any>();
   const [activeSearchInp, setSearchInp] = useState<boolean>(false);
+  const headerData = useSelector(
+    (state: { activeLogin: boolean; loginLink: string }) => {
+      return { login: state.activeLogin, loginLink: state.loginLink };
+    }
+  );
   const setSearchInpToFalse = () => setSearchInp(false);
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get("/api/header-data");
-      setHeaderData(data);
-    })();
+    dispatch(getUserInfo());
   }, []);
   return (
     <>
@@ -66,9 +67,11 @@ export default function NavBar() {
               >
                 검색
               </button>
-              <Link href="/write-person">
-                <button className="write-pesron">쓰기</button>
-              </Link>
+              {headerData.login ? (
+                <Link href="/write-person">
+                  <button className="write-pesron">쓰기</button>
+                </Link>
+              ) : null}
             </li>
           </ul>
         </nav>

@@ -56,6 +56,7 @@ var handle = app.getRequestHandler();
 var auth = require("./auth");
 var headerData = require("./header-data");
 var search = require("./search");
+var userInfo = require("./userInfo");
 var sessionStore = new MySQlStore({
     host: "localhost",
     user: "root",
@@ -98,6 +99,7 @@ app.prepare().then(function () {
         connection_1.default.query("UPDATE contents SET id= '', contents ='".concat(JSON.stringify(req.body), "' WHERE contentsId = ").concat(id, ";"));
         res.status(200).redirect("/");
     });
+    server.use(userInfo);
     server.get("/api/contents/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var rows;
         return __generator(this, function (_a) {

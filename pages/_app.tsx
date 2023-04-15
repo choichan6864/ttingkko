@@ -2,11 +2,13 @@ import NavBar from "@/components/navBar";
 import "../styles/global.css";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
-    <>
+    <Provider store={store}>
       <NavBar />
       <main>
         {router.pathname !== "/" ? (
@@ -31,6 +33,6 @@ export default function App({ Component, pageProps }: AppProps) {
           `}
         </style>
       </main>
-    </>
+    </Provider>
   );
 }

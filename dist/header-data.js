@@ -40,10 +40,7 @@ var express = require("express");
 var router = express.Router();
 router.get("/api/header-data", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        res.send({
-            login: req.session.user !== undefined,
-            loginLink: process.env.API_ENDPOINT,
-        });
+        res.send({});
         return [2 /*return*/];
     });
 }); });

@@ -7,8 +7,6 @@ export default function SearchInput({ event }: { event: () => void }) {
   const [result, setResult] = useState<
     { contentsId: number; personName: string }[]
   >([]);
-  const [active, setActive] = useState<boolean>(false);
-  const [upUl, setUpUl] = useState<boolean>(false);
   const inpRef = useRef<HTMLInputElement>(null);
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value !== "") {
@@ -19,17 +17,9 @@ export default function SearchInput({ event }: { event: () => void }) {
   const onkeydown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode == 27) event();
   };
-  const onFocus = () => setActive(true);
-  const onBlur = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!upUl) {
-      setActive(false);
-    }
-  };
-  const onMouseOver = () => setUpUl(true);
   const onClick = (e: any) => {
     if (inpRef.current && !inpRef.current.contains(e.target)) event();
   };
-  const onMouseOut = () => setUpUl(false);
   useEffect(() => {
     inpRef.current?.focus();
   });
@@ -40,27 +30,23 @@ export default function SearchInput({ event }: { event: () => void }) {
           <input
             ref={inpRef}
             onKeyDown={onkeydown}
-            onFocus={onFocus}
             onChange={onChange}
-            onBlur={onBlur}
             autoComplete="off"
           ></input>
           <button type="submit" className="search-button">
             <Image src="/search-logo.png" alt="" width={40} height={40}></Image>
           </button>
         </form>
-        <ul onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-          {active
-            ? result.map((data: { contentsId: number; personName: string }) => {
-                return (
-                  <li key={data.personName} className="search-result">
-                    <Link href={`/contents/${data.contentsId}`}>
-                      <button className="Link-Button">{data.personName}</button>
-                    </Link>
-                  </li>
-                );
-              })
-            : null}
+        <ul>
+          {result.map((data: { contentsId: number; personName: string }) => {
+            return (
+              <li key={data.personName} className="search-result">
+                <Link href={`/contents/${data.contentsId}`} onClick={event}>
+                  <button className="Link-Button">{data.personName}</button>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <style jsx>
@@ -83,12 +69,19 @@ export default function SearchInput({ event }: { event: () => void }) {
             margin: auto;
           }
           ul {
+            max-width: 1000px;
             display: flex;
-            position: fixed;
+            width: 100%;
             flex-direction: column;
           }
           li {
             display: inline-block;
+          }
+          li:first-child .Link-Button {
+            border-radius: 10px 10px 0 0;
+          }
+          li:last-child .Link-Button {
+            border-radius: 0 0 10px 10px;
           }
           form {
             align-items: center;
@@ -96,8 +89,8 @@ export default function SearchInput({ event }: { event: () => void }) {
             height: 90px;
           }
           .Link-Button {
-            height: 30px;
-            width: 12rem;
+            height: 40px;
+            width: 100%;
             cursor: pointer;
             background-color: white;
             text-align: start;

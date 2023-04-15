@@ -166,8 +166,6 @@ axios__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (awa
 
 function SearchInput({ event  }) {
     const [result, setResult] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]);
-    const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false);
-    const [upUl, setUpUl] = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false);
     const inpRef = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
     const onChange = async (e)=>{
         if (e.target.value !== "") {
@@ -178,42 +176,32 @@ function SearchInput({ event  }) {
     const onkeydown = (e)=>{
         if (e.keyCode == 27) event();
     };
-    const onFocus = ()=>setActive(true);
-    const onBlur = (e)=>{
-        if (!upUl) {
-            setActive(false);
-        }
-    };
-    const onMouseOver = ()=>setUpUl(true);
     const onClick = (e)=>{
         if (inpRef.current && !inpRef.current.contains(e.target)) event();
     };
-    const onMouseOut = ()=>setUpUl(false);
     (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(()=>{
         inpRef.current?.focus();
     });
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         onClick: onClick,
-        className: "jsx-3eaa2cba6b5c1f09" + " " + "search-window",
+        className: "jsx-39ab993b64a27278" + " " + "search-window",
         children: [
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "jsx-3eaa2cba6b5c1f09" + " " + "search",
+                className: "jsx-39ab993b64a27278" + " " + "search",
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("form", {
-                        className: "jsx-3eaa2cba6b5c1f09",
+                        className: "jsx-39ab993b64a27278",
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                                 ref: inpRef,
                                 onKeyDown: onkeydown,
-                                onFocus: onFocus,
                                 onChange: onChange,
-                                onBlur: onBlur,
                                 autoComplete: "off",
-                                className: "jsx-3eaa2cba6b5c1f09"
+                                className: "jsx-39ab993b64a27278"
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                 type: "submit",
-                                className: "jsx-3eaa2cba6b5c1f09" + " " + "search-button",
+                                className: "jsx-39ab993b64a27278" + " " + "search-button",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     src: "/search-logo.png",
                                     alt: "",
@@ -224,27 +212,26 @@ function SearchInput({ event  }) {
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
-                        onMouseOver: onMouseOver,
-                        onMouseOut: onMouseOut,
-                        className: "jsx-3eaa2cba6b5c1f09",
-                        children: active ? result.map((data)=>{
+                        className: "jsx-39ab993b64a27278",
+                        children: result.map((data)=>{
                             return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                className: "jsx-3eaa2cba6b5c1f09" + " " + "search-result",
+                                className: "jsx-39ab993b64a27278" + " " + "search-result",
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_4___default()), {
                                     href: `/contents/${data.contentsId}`,
+                                    onClick: event,
                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                        className: "jsx-3eaa2cba6b5c1f09" + " " + "Link-Button",
+                                        className: "jsx-39ab993b64a27278" + " " + "Link-Button",
                                         children: data.personName
                                     })
                                 })
                             }, data.personName);
-                        }) : null
+                        })
                     })
                 ]
             }),
             react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                id: "3eaa2cba6b5c1f09",
-                children: "*.jsx-3eaa2cba6b5c1f09{color:black}.search-window.jsx-3eaa2cba6b5c1f09{background-color:rgb(0,0,0,.5);width:100%;position:fixed;z-index:6;top:0;height:100vh}.search.jsx-3eaa2cba6b5c1f09{max-width:1e3px;position:relative;top:200px;margin:auto}ul.jsx-3eaa2cba6b5c1f09{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;position:fixed;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}li.jsx-3eaa2cba6b5c1f09{display:inline-block}form.jsx-3eaa2cba6b5c1f09{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:90px}.Link-Button.jsx-3eaa2cba6b5c1f09{height:30px;width:12rem;cursor:pointer;background-color:white;text-align:start;padding-left:.9rem}.Link-Button.jsx-3eaa2cba6b5c1f09:hover{background-color:rgb(229,229,229)}input.jsx-3eaa2cba6b5c1f09{height:60px;border:1px solid black;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;padding-left:16px;width:100%;outline:none;font-size:20px}.search-button.jsx-3eaa2cba6b5c1f09{position:absolute;right:0;height:60px;width:60px;cursor:pointer;background-color:rgb(0,0,0,0)}"
+                id: "39ab993b64a27278",
+                children: "*.jsx-39ab993b64a27278{color:black}.search-window.jsx-39ab993b64a27278{background-color:rgb(0,0,0,.5);width:100%;position:fixed;z-index:6;top:0;height:100vh}.search.jsx-39ab993b64a27278{max-width:1e3px;position:relative;top:200px;margin:auto}ul.jsx-39ab993b64a27278{max-width:1e3px;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}li.jsx-39ab993b64a27278{display:inline-block}li.jsx-39ab993b64a27278:first-child .Link-Button.jsx-39ab993b64a27278{-webkit-border-radius:10px 10px 0 0;-moz-border-radius:10px 10px 0 0;border-radius:10px 10px 0 0}li.jsx-39ab993b64a27278:last-child .Link-Button.jsx-39ab993b64a27278{-webkit-border-radius:0 0 10px 10px;-moz-border-radius:0 0 10px 10px;border-radius:0 0 10px 10px}form.jsx-39ab993b64a27278{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:90px}.Link-Button.jsx-39ab993b64a27278{height:40px;width:100%;cursor:pointer;background-color:white;text-align:start;padding-left:.9rem}.Link-Button.jsx-39ab993b64a27278:hover{background-color:rgb(229,229,229)}input.jsx-39ab993b64a27278{height:60px;border:1px solid black;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;padding-left:16px;width:100%;outline:none;font-size:20px}.search-button.jsx-39ab993b64a27278{position:absolute;right:0;height:60px;width:60px;cursor:pointer;background-color:rgb(0,0,0,0)}"
             })
         ]
     });

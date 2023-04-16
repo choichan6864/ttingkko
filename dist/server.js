@@ -101,7 +101,7 @@ app.prepare().then(function () {
         var _a, _b;
         if (req.session.user) {
             var id = (_a = req.headers.referer) === null || _a === void 0 ? void 0 : _a.split("/")[5];
-            connection_1.default.query("UPDATE contents SET id= ".concat((_b = req.session.user) === null || _b === void 0 ? void 0 : _b.id, ", contents ='").concat(JSON.stringify(req.body), "' WHERE contentsId = ").concat(id, ";"));
+            connection_1.default.query("UPDATE contents SET id= '".concat((_b = req.session.user) === null || _b === void 0 ? void 0 : _b.id, "', contents ='").concat(JSON.stringify(req.body), "' WHERE contentsId = ").concat(id, ";"));
             res.status(200).redirect("/");
         }
         else

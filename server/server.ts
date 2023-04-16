@@ -76,7 +76,7 @@ app.prepare().then(() => {
     if(req.session.user) {
       const id = req.headers.referer?.split("/")[5];
       connection.query(
-      `UPDATE contents SET id= ${req.session.user?.id}, contents ='${JSON.stringify(
+      `UPDATE contents SET id= '${req.session.user?.id}', contents ='${JSON.stringify(
         req.body
       )}' WHERE contentsId = ${id};`
       );

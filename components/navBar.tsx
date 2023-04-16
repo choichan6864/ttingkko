@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -62,22 +61,41 @@ export default function NavBar() {
             )}
           </ul>
           <ul>
-            <li>
+            <li className="function-button">
               <button
                 onClick={() => setSearchInp(true)}
                 className="active-search-input"
               >
-                검색
+                <Image
+                  width={45}
+                  height={45}
+                  alt=""
+                  src="/search-logo.png"
+                ></Image>
               </button>
               {headerData.login ? (
                 <Link href="/write-person">
-                  <button className="write-pesron">쓰기</button>
+                  <button className="write-pesron">
+                    <Image
+                      width={20}
+                      height={20}
+                      src="/write-logo.png"
+                      alt=""
+                    ></Image>
+                  </button>
                 </Link>
               ) : null}
             </li>
           </ul>
         </nav>
         <style jsx>{`
+          .write-person {
+            height: 90px;
+            background-color: rgb(0, 0, 0, 0);
+          }
+          .function-button {
+            display: flex;
+          }
           .active-search-input {
             height: 90px;
             width: 4rem;

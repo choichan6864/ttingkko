@@ -2,12 +2,27 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "@/store/store";
 
 export default function Contents() {
-  const [personName, setPersonName] = useState<string>("");
+  const stateData = useSelector(
+    (state: { activeLogin: boolean; loginLink: string }) => {
+      return { login: state.activeLogin, loginLink: state.loginLink };
+    }
+  );
+  const dispatch = useDispatch<any>();
+  const [personNameAndId, setPersonNameAndId] = useState<{
+    personName: string;
+    idOfWriter: string;
+  }>({ personName: "", idOfWriter: "" });
+  const { personName, idOfWriter } = personNameAndId;
   const [contents, setContents] = useState<
     { contents: string; listText: string }[]
   >([]);
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
   const router = useRouter();
   useEffect(() => {
     if (router.query.id)
@@ -16,7 +31,10 @@ export default function Contents() {
         const { contents } = data;
         const array: { contents: string; listText: string }[] = [];
         const listArray = [];
-        setPersonName(contents.personName);
+        setPersonNameAndId({
+          personName: contents.personName,
+          idOfWriter: data.id,
+        });
         if (typeof contents.contents !== "string")
           contents.contents.map(
             (data: { contents: string; listText: string }, index: number) => {
@@ -37,13 +55,19 @@ export default function Contents() {
         setContents(array);
       })();
   }, [router.isReady, router.query]);
+  console.log(personNameAndId);
   return (
     <div className="container">
       <h1 className="person-name">
         <span>{personName}</span>
-        <Link href={`/contents/edit/${router.query.id}`}>
-          <button className="edit-button">수정</button>
-        </Link>
+        <div className="writer-and-edit">
+          <span className="writer">작성자: {idOfWriter}</span>
+          {stateData.login ? (
+            <Link href={`/contents/edit/${router.query.id}`}>
+              <button className="edit-button">수정</button>
+            </Link>
+          ) : null}
+        </div>
       </h1>
       {contents.map(
         (data: { contents: string; listText: string }, i: number) => {
@@ -55,7 +79,10 @@ export default function Contents() {
                 <span className="listText">{data.listText}</span>
               </h1>
               <hr />
-              <div className="contents" dangerouslySetInnerHTML={{__html:data.contents}}></div>
+              <div
+                className="contents"
+                dangerouslySetInnerHTML={{ __html: data.contents }}
+              ></div>
             </div>
           );
         }
@@ -68,11 +95,16 @@ export default function Contents() {
             display: flex;
             justify-content: space-between;
           }
+          .writer {
+            margin-right:10px;
+            font-size: 16px;
+            font-weight: 400;
+          }
           .contents {
             padding-left: 1.4rem;
           }
           .list {
-            margin-bottom:20px;
+            margin-bottom: 20px;
           }
           button {
             cursor: pointer;

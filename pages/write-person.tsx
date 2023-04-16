@@ -1,11 +1,18 @@
-import { ChangeEvent, useEffect, useState, ReactElement } from "react";
+import { ChangeEvent, useEffect, useState, ReactElement, useRef } from "react";
 import ListInput from "@/components/plusListInput.write";
-import FunctionButton from "@/components/functionButton";
 import ToolBar from "@/components/toolbar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "@/store/store";
 
 function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
   const [list, setList] = useState<{ active: boolean; i: number }[]>([]);
+  const stateData = useSelector(
+    (state: { activeLogin: boolean; loginLink: string }) => {
+      return { login: state.activeLogin, loginLink: state.loginLink };
+    }
+  );
+  const dispatch = useDispatch<any>();
   const remove = (index: number) => {
     setList((list: { active: boolean; i: number }[]) => {
       const newList = list.filter(
@@ -38,70 +45,78 @@ function WritingPerson() {
     setPersonName(e.target.value);
   };
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    console.log(list);
-    !list[0] || personName === "" ? e.preventDefault() : null;
+    if (!list[0] || personName === "") {
+      e.preventDefault();
+    }
   };
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
   return (
-    <form action="/api/write" method="post" onSubmit={onSubmit}>
-      <input
-        name="personName"
-        className="plus-input"
-        placeholder="이름"
-        type="text"
-        onChange={onChange}
-      ></input>
-      <ToolBar onClickPlusButton={onClickPlusButton} />
-      {list.map((data: { active: boolean; i: number }, i: number) => {
-        return (
-          <ListInput
-            Contents=""
-            ListText=""
-            remove={() => remove(i)}
-            index={i}
-            setListToTrue={() => setListToTrue(i)}
-            setListToFalse={() => setListToFalse(i)}
-            key={data.i}
-          />
-        );
-      })}
-      <style jsx>
-        {`
-          h1 {
-            font-size: 40px;
-          }
-          .cancel-button {
-            cursor: pointer;
-            width: 5rem;
-            height: 35px;
-            color: black;
-            border-radius: 10px;
-          }
-          .save-button {
-            color: black;
-            cursor: pointer;
-            width: 5rem;
-            height: 35px;
-            border-radius: 10px;
-          }
-          .plus-input {
-            padding-left: 20px;
-            height: 50px;
-            font-size: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            color: black;
-          }
-          input[type="submit"] {
-            height: 50px;
-          }
-          form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-        `}
-      </style>
-    </form>
+    <>
+      {stateData.login ? (
+        <form action="/api/write" method="post" onSubmit={onSubmit}>
+          <input
+            name="personName"
+            className="plus-input"
+            placeholder="이름"
+            type="text"
+            onChange={onChange}
+          ></input>
+          <ToolBar onClickPlusButton={onClickPlusButton} />
+          {list.map((data: { active: boolean; i: number }, i: number) => {
+            return (
+              <ListInput
+                Contents=""
+                ListText=""
+                remove={() => remove(i)}
+                index={i}
+                setListToTrue={() => setListToTrue(i)}
+                setListToFalse={() => setListToFalse(i)}
+                key={data.i}
+              />
+            );
+          })}
+          <style jsx>
+            {`
+              h1 {
+                font-size: 40px;
+              }
+              .cancel-button {
+                cursor: pointer;
+                width: 5rem;
+                height: 35px;
+                color: black;
+                border-radius: 10px;
+              }
+              .save-button {
+                color: black;
+                cursor: pointer;
+                width: 5rem;
+                height: 35px;
+                border-radius: 10px;
+              }
+              .plus-input {
+                padding-left: 20px;
+                height: 50px;
+                font-size: 20px;
+                margin-bottom: 20px;
+                border-radius: 15px;
+                color: black;
+              }
+              input[type="submit"] {
+                height: 50px;
+              }
+              form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+              }
+            `}
+          </style>
+        </form>
+      ) : null}
+    </>
   );
 }
 

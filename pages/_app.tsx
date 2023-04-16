@@ -29,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
               max-width: 1000px;
               padding: 48px 3rem 3rem 3rem;
               min-height: 100vh;
+              background-color: rgb(50, 50, 50);
               margin: auto;
             }
           `}

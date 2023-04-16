@@ -70,7 +70,7 @@ app.prepare().then(function () {
         resave: false,
         store: sessionStore,
         saveUninitialized: true,
-        cookie: { httponly: true, maxAge: 60 * 60 * 24 * 30 },
+        cookie: { httponly: true, maxAge: 60 * 60 * 1000 * 24 * 30 },
         name: "ue-if",
     }));
     server.use(express.urlencoded({ extended: true }));
@@ -78,8 +78,12 @@ app.prepare().then(function () {
     server.use(headerData);
     server.use(search);
     server.post("/api/write", function (req, res) {
-        connection_1.default.query("insert into contents(id, contents) values('','".concat(JSON.stringify(req.body), "');"));
-        res.status(200).redirect("/");
+        if (req.session.user) {
+            connection_1.default.query("insert into contents(id, contents) values('".concat(req.session.user.id, "','").concat(JSON.stringify(req.body), "');"));
+            res.status(200).redirect("/");
+        }
+        else
+            res.status(404);
     });
     server.get("/api/bring-lists", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var rows;
@@ -94,10 +98,14 @@ app.prepare().then(function () {
         });
     }); });
     server.post("/api/edit", function (req, res) {
-        var _a;
-        var id = (_a = req.headers.referer) === null || _a === void 0 ? void 0 : _a.split("/")[5];
-        connection_1.default.query("UPDATE contents SET id= '', contents ='".concat(JSON.stringify(req.body), "' WHERE contentsId = ").concat(id, ";"));
-        res.status(200).redirect("/");
+        var _a, _b;
+        if (req.session.user) {
+            var id = (_a = req.headers.referer) === null || _a === void 0 ? void 0 : _a.split("/")[5];
+            connection_1.default.query("UPDATE contents SET id= ".concat((_b = req.session.user) === null || _b === void 0 ? void 0 : _b.id, ", contents ='").concat(JSON.stringify(req.body), "' WHERE contentsId = ").concat(id, ";"));
+            res.status(200).redirect("/");
+        }
+        else
+            res.status(404);
     });
     server.use(userInfo);
     server.get("/api/contents/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

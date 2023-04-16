@@ -87,7 +87,7 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
         }
     };
     (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
-        contentsRef.current?.focus();
+        listTextRef.current?.focus();
     }, [
         plusInput
     ]);
@@ -251,6 +251,7 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
 
 
 function ToolBar({ onClickPlusButton  }) {
+    const [submiting, setSumbiting] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
     const [fixedToolBar, setFixedToolBar] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
     (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
         window.addEventListener("scroll", ()=>{
@@ -258,10 +259,20 @@ function ToolBar({ onClickPlusButton  }) {
             else setFixedToolBar(false);
         });
     }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{
+        const onBeforeUnload = (e)=>{
+            e.preventDefault();
+            if (!submiting) e.returnValue = true;
+        };
+        window.addEventListener("beforeunload", onBeforeUnload);
+        return ()=>window.removeEventListener("beforeunload", onBeforeUnload);
+    }, [
+        submiting
+    ]);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         className: styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default().dynamic([
             [
-                "3ba42aaf8114ffd1",
+                "ef435982b37d4881",
                 [
                     fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"
                 ]
@@ -277,7 +288,9 @@ function ToolBar({ onClickPlusButton  }) {
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_functionButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
                 text: "\uD83D\uDCC4",
                 mod: "submit",
-                event: ()=>{},
+                event: ()=>{
+                    setSumbiting(true);
+                },
                 title: "저장"
             }),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_functionButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {
@@ -287,12 +300,12 @@ function ToolBar({ onClickPlusButton  }) {
                 title: "이미지 추가"
             }),
             react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                id: "3ba42aaf8114ffd1",
+                id: "ef435982b37d4881",
                 dynamic: [
                     fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"
                 ],
                 children: `.tool-bar.__jsx-style-dynamic-selector{height:40px;${fixedToolBar ? "position: fixed;" : "margin-bottom:20px;"}
-            background-color:rgb(50, 50, 50);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;z-index:1;max-width:1e3px;width:100%;top:90px}`
+            background-color:rgb(80, 80, 80);display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;z-index:1;max-width:1e3px;width:100%;top:90px}`
             })
         ]
     });

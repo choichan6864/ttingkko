@@ -70,17 +70,17 @@ function NavBar() {
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("header", {
-                className: "jsx-5f11b4353334625f",
+                className: "jsx-971c85e34d71a970",
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
-                        className: "jsx-5f11b4353334625f",
+                        className: "jsx-971c85e34d71a970",
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                 href: "/",
                                 target: "_self",
                                 legacyBehavior: true,
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                    className: "jsx-5f11b4353334625f" + " " + "logo",
+                                    className: "jsx-971c85e34d71a970" + " " + "logo",
                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
                                         width: 90,
                                         alt: "",
@@ -90,7 +90,7 @@ function NavBar() {
                                 })
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                                className: "jsx-5f11b4353334625f" + " " + "link-list",
+                                className: "jsx-971c85e34d71a970" + " " + "link-list",
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
                                         href: "/list",
@@ -110,20 +110,30 @@ function NavBar() {
                                 ]
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
-                                className: "jsx-5f11b4353334625f",
+                                className: "jsx-971c85e34d71a970",
                                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
-                                    className: "jsx-5f11b4353334625f",
+                                    className: "jsx-971c85e34d71a970" + " " + "function-button",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                             onClick: ()=>setSearchInp(true),
-                                            className: "jsx-5f11b4353334625f" + " " + "active-search-input",
-                                            children: "검색"
+                                            className: "jsx-971c85e34d71a970" + " " + "active-search-input",
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                                width: 45,
+                                                height: 45,
+                                                alt: "",
+                                                src: "/search-logo.png"
+                                            })
                                         }),
                                         headerData.login ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_3___default()), {
                                             href: "/write-person",
                                             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                                                className: "jsx-5f11b4353334625f" + " " + "write-pesron",
-                                                children: "쓰기"
+                                                className: "jsx-971c85e34d71a970" + " " + "write-pesron",
+                                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                                    width: 20,
+                                                    height: 20,
+                                                    src: "/write-logo.png",
+                                                    alt: ""
+                                                })
                                             })
                                         }) : null
                                     ]
@@ -132,8 +142,8 @@ function NavBar() {
                         ]
                     }),
                     react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                        id: "5f11b4353334625f",
-                        children: ".active-search-input.jsx-5f11b4353334625f{height:90px;width:4rem;cursor:pointer;background-color:rgb(0,0,0,0)}.logo.jsx-5f11b4353334625f{width:90px;height:90px}li.jsx-5f11b4353334625f{display:inline-block}.write-pesron.jsx-5f11b4353334625f{height:90px;width:4rem;cursor:pointer;color:white;background-color:rgb(0,0,0,0)}header.jsx-5f11b4353334625f{height:90px;position:fixed;background-color:rgb(64,64,64);border-bottom:1px solid black;top:0;z-index:5;width:100%}nav.jsx-5f11b4353334625f{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:100%;margin:auto;max-width:1280px}.link-list.jsx-5f11b4353334625f{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}"
+                        id: "971c85e34d71a970",
+                        children: ".write-person.jsx-971c85e34d71a970{height:90px;background-color:rgb(0,0,0,0)}.function-button.jsx-971c85e34d71a970{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.active-search-input.jsx-971c85e34d71a970{height:90px;width:4rem;cursor:pointer;background-color:rgb(0,0,0,0)}.logo.jsx-971c85e34d71a970{width:90px;height:90px}li.jsx-971c85e34d71a970{display:inline-block}.write-pesron.jsx-971c85e34d71a970{height:90px;width:4rem;cursor:pointer;color:white;background-color:rgb(0,0,0,0)}header.jsx-971c85e34d71a970{height:90px;position:fixed;background-color:rgb(64,64,64);border-bottom:1px solid black;top:0;z-index:5;width:100%}nav.jsx-971c85e34d71a970{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:100%;margin:auto;max-width:1280px}.link-list.jsx-971c85e34d71a970{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}"
                     })
                 ]
             }),
@@ -208,6 +218,7 @@ function SearchInput({ event  }) {
                                 ref: inpRef,
                                 onKeyDown: onkeydown,
                                 onChange: onChange,
+                                placeholder: "검색어를 입력하세요",
                                 autoComplete: "off",
                                 className: "jsx-39ab993b64a27278"
                             }),
@@ -217,8 +228,8 @@ function SearchInput({ event  }) {
                                 children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_3___default()), {
                                     src: "/search-logo.png",
                                     alt: "",
-                                    width: 40,
-                                    height: 40
+                                    width: 50,
+                                    height: 50
                                 })
                             })
                         ]
@@ -291,77 +302,27 @@ function App({ Component , pageProps  }) {
         children: [
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_navBar__WEBPACK_IMPORTED_MODULE_2__/* ["default"] */ .Z, {}),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", {
-                className: "jsx-c13e756e1cba12f0",
+                className: "jsx-90c4b55cbb991bf5",
                 children: [
                     router.pathname !== "/" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
-                        className: "jsx-c13e756e1cba12f0",
+                        className: "jsx-90c4b55cbb991bf5",
                         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                             ...pageProps,
-                            className: "jsx-c13e756e1cba12f0" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
+                            className: "jsx-90c4b55cbb991bf5" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
                         })
                     }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                         ...pageProps,
-                        className: "jsx-c13e756e1cba12f0" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
+                        className: "jsx-90c4b55cbb991bf5" + " " + (pageProps && pageProps.className != null && pageProps.className || "")
                     }),
                     react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                        id: "c13e756e1cba12f0",
-                        children: "main.jsx-c13e756e1cba12f0{width:100%;min-height:100vh;background-color:rgb(80,80,80)}section.jsx-c13e756e1cba12f0{max-width:1e3px;padding:48px 3rem 3rem 3rem;min-height:100vh;margin:auto}"
+                        id: "90c4b55cbb991bf5",
+                        children: "main.jsx-90c4b55cbb991bf5{width:100%;min-height:100vh;background-color:rgb(80,80,80)}section.jsx-90c4b55cbb991bf5{max-width:1e3px;padding:48px 3rem 3rem 3rem;min-height:100vh;background-color:rgb(50,50,50);margin:auto}"
                     })
                 ]
             })
         ]
     });
 }
-
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
-/***/ 6907:
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "b": () => (/* binding */ getUserInfo),
-/* harmony export */   "h": () => (/* binding */ store)
-/* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5184);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9648);
-var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_1__]);
-axios__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
-
-
-const getUserInfo = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("slice/userInfo", async ()=>{
-    const { data: userInfo  } = await axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/userInfo");
-    return userInfo;
-});
-const slice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
-    name: "slice",
-    initialState: {
-        activeLogin: false,
-        loginLink: "/",
-        userInfo: {
-            id: "",
-            email: ""
-        }
-    },
-    reducers: {},
-    extraReducers: (builder)=>{
-        builder.addCase(getUserInfo.fulfilled, (state, action)=>{
-            const { user , loginLink  } = action.payload;
-            if (user) {
-                state.userInfo = user;
-                state.activeLogin = true;
-            }
-            state.loginLink = loginLink;
-        });
-    }
-});
-const store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.configureStore)(slice);
-
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
@@ -582,7 +543,7 @@ module.exports = import("axios");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,443,675], () => (__webpack_exec__(5656)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,443,675,907], () => (__webpack_exec__(5656)));
 module.exports = __webpack_exports__;
 
 })();

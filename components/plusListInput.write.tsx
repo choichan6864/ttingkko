@@ -45,7 +45,7 @@ export default function ListInput({
     }
   };
   useEffect(() => {
-    contentsRef.current?.focus();
+    listTextRef.current?.focus();
   }, [plusInput]);
   return (
     <>

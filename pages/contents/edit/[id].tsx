@@ -3,6 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import ListInput from "@/components/plusListInput.write";
 import ToolBar from "@/components/toolbar";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInfo } from "@/store/store";
 
 function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
@@ -10,6 +12,12 @@ function WritingPerson() {
   const [contents, setContents] = useState<
     { contents: string; listText: string }[]
   >([]);
+  const stateData = useSelector(
+    (state: { activeLogin: boolean; loginLink: string }) => {
+      return { login: state.activeLogin, loginLink: state.loginLink };
+    }
+  );
+  const dispatch = useDispatch<any>();
   const router = useRouter();
   const remove = (index: number) => {
     setList((list: { active: boolean; i: number }[]) => {
@@ -44,6 +52,9 @@ function WritingPerson() {
     !list[0] || personName === "" ? e.preventDefault() : null;
   };
   useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
+  useEffect(() => {
     if (router.query.id)
       (async () => {
         const { data } = await axios.get(`/api/contents/${router.query.id}`);
@@ -73,71 +84,75 @@ function WritingPerson() {
       })();
   }, [router.isReady]);
   return (
-    <form action="/api/edit" method="post" onSubmit={onSubmit}>
-      <h1>{personName}</h1>
-      <input type="hidden" name="personName" value={personName} />
-      <ToolBar onClickPlusButton={onClickPlusButton} />
-      {list.map((data: { active: boolean; i: number }, i: number) => {
-        return contents.length - 1 >= i ? (
-          <ListInput
-            Contents={contents[i].contents}
-            ListText={contents[i].listText}
-            remove={() => remove(i)}
-            index={i}
-            setListToTrue={() => setListToTrue(i)}
-            setListToFalse={() => setListToFalse(i)}
-            key={data.i}
-          />
-        ) : (
-          <ListInput
-            Contents=""
-            ListText=""
-            remove={() => remove(i)}
-            index={i}
-            setListToTrue={() => setListToTrue(i)}
-            setListToFalse={() => setListToFalse(i)}
-            key={data.i}
-          />
-        );
-      })}
-      <style jsx>
-        {`
-          h1 {
-            font-size: 40px;
-          }
-          .cancel-button {
-            cursor: pointer;
-            width: 5rem;
-            height: 35px;
-            color: black;
-            border-radius: 10px;
-          }
-          .save-button {
-            color: black;
-            cursor: pointer;
-            width: 5rem;
-            height: 35px;
-            border-radius: 10px;
-          }
-          .plus-input {
-            padding-left: 20px;
-            height: 50px;
-            font-size: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-            color: black;
-          }
-          input[type="submit"] {
-            height: 50px;
-          }
-          form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-        `}
-      </style>
-    </form>
+    <>
+      {stateData.login ? (
+        <form action="/api/edit" method="post" onSubmit={onSubmit}>
+          <h1>{personName}</h1>
+          <input type="hidden" name="personName" value={personName} />
+          <ToolBar onClickPlusButton={onClickPlusButton} />
+          {list.map((data: { active: boolean; i: number }, i: number) => {
+            return contents.length - 1 >= i ? (
+              <ListInput
+                Contents={contents[i].contents}
+                ListText={contents[i].listText}
+                remove={() => remove(i)}
+                index={i}
+                setListToTrue={() => setListToTrue(i)}
+                setListToFalse={() => setListToFalse(i)}
+                key={data.i}
+              />
+            ) : (
+              <ListInput
+                Contents=""
+                ListText=""
+                remove={() => remove(i)}
+                index={i}
+                setListToTrue={() => setListToTrue(i)}
+                setListToFalse={() => setListToFalse(i)}
+                key={data.i}
+              />
+            );
+          })}
+          <style jsx>
+            {`
+              h1 {
+                font-size: 40px;
+              }
+              .cancel-button {
+                cursor: pointer;
+                width: 5rem;
+                height: 35px;
+                color: black;
+                border-radius: 10px;
+              }
+              .save-button {
+                color: black;
+                cursor: pointer;
+                width: 5rem;
+                height: 35px;
+                border-radius: 10px;
+              }
+              .plus-input {
+                padding-left: 20px;
+                height: 50px;
+                font-size: 20px;
+                margin-bottom: 20px;
+                border-radius: 15px;
+                color: black;
+              }
+              input[type="submit"] {
+                height: 50px;
+              }
+              form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+              }
+            `}
+          </style>
+        </form>
+      ) : null}
+    </>
   );
 }
 

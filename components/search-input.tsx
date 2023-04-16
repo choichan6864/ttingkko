@@ -31,10 +31,11 @@ export default function SearchInput({ event }: { event: () => void }) {
             ref={inpRef}
             onKeyDown={onkeydown}
             onChange={onChange}
+            placeholder="검색어를 입력하세요"
             autoComplete="off"
           ></input>
           <button type="submit" className="search-button">
-            <Image src="/search-logo.png" alt="" width={40} height={40}></Image>
+            <Image src="/search-logo.png" alt="" width={50} height={50}></Image>
           </button>
         </form>
         <ul>

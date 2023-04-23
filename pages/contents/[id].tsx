@@ -11,7 +11,6 @@ export default function Contents() {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
-  const dispatch = useDispatch<any>();
   const [personNameAndId, setPersonNameAndId] = useState<{
     personName: string;
     idOfWriter: string;
@@ -20,9 +19,6 @@ export default function Contents() {
   const [contents, setContents] = useState<
     { contents: string; listText: string }[]
   >([]);
-  useEffect(() => {
-    dispatch(getUserInfo());
-  }, []);
   const router = useRouter();
   useEffect(() => {
     if (router.query.id)
@@ -55,7 +51,6 @@ export default function Contents() {
         setContents(array);
       })();
   }, [router.isReady, router.query]);
-  console.log(personNameAndId);
   return (
     <div className="container">
       <h1 className="person-name">
@@ -96,7 +91,7 @@ export default function Contents() {
             justify-content: space-between;
           }
           .writer {
-            margin-right:10px;
+            margin-right: 10px;
             font-size: 16px;
             font-weight: 400;
           }

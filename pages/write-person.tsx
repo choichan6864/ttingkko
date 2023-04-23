@@ -1,8 +1,7 @@
 import { ChangeEvent, useEffect, useState, ReactElement, useRef } from "react";
 import ListInput from "@/components/plusListInput.write";
 import ToolBar from "@/components/toolbar";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "@/store/store";
+import {  useSelector } from "react-redux";
 
 function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
@@ -12,15 +11,14 @@ function WritingPerson() {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
-  const dispatch = useDispatch<any>();
+  console.log(list);
   const remove = (index: number) => {
     setList((list: { active: boolean; i: number }[]) => {
-      const newList = list.filter(
+      return list.filter(
         (data: { active: boolean; i: number }, i: number) => {
           return i !== index;
         }
       );
-      return newList;
     });
   };
   const setListToTrue = (index: number) => {
@@ -49,9 +47,6 @@ function WritingPerson() {
       e.preventDefault();
     }
   };
-  useEffect(() => {
-    dispatch(getUserInfo());
-  }, []);
   return (
     <>
       {stateData.login ? (
@@ -101,7 +96,7 @@ function WritingPerson() {
                 height: 50px;
                 font-size: 20px;
                 margin-bottom: 20px;
-                border-radius: 15px;
+                border-radius: 5px;
                 color: black;
               }
               input[type="submit"] {

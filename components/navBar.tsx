@@ -48,14 +48,14 @@ export default function NavBar() {
         <nav>
           <Link href={"/"} target="_self" legacyBehavior>
             <a className="logo">
-              <Image width={90} alt="" height={90} src="/logo.png"></Image>
+              <Image width={90} alt="" priority height={90} src="/Image/logo.png"></Image>
             </a>
           </Link>
           <ul className="link-list">
-            <LinkButton href="/list" text="목록" />
-            <LinkButton href="/" text="홈" />
+            <LinkButton href="/list/1" text="목록" />
+            <LinkButton href="/notice-board/1" text="게시판" />
             {headerData.login ? (
-              <LinkButton href="user-info" text="내 정보" />
+              <LinkButton href="/user-info" text="내 정보" />
             ) : (
               <LinkButton href={headerData.loginLink} text="로그인" />
             )}

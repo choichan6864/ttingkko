@@ -84,8 +84,9 @@ function NavBar() {
                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_image__WEBPACK_IMPORTED_MODULE_2___default()), {
                                         width: 90,
                                         alt: "",
+                                        priority: true,
                                         height: 90,
-                                        src: "/logo.png"
+                                        src: "/Image/logo.png"
                                     })
                                 })
                             }),
@@ -93,15 +94,15 @@ function NavBar() {
                                 className: "jsx-971c85e34d71a970" + " " + "link-list",
                                 children: [
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
-                                        href: "/list",
+                                        href: "/list/1",
                                         text: "목록"
                                     }),
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
-                                        href: "/",
-                                        text: "홈"
+                                        href: "/notice-board/1",
+                                        text: "게시판"
                                     }),
                                     headerData.login ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
-                                        href: "user-info",
+                                        href: "/user-info",
                                         text: "내 정보"
                                     }) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(LinkButton, {
                                         href: headerData.loginLink,
@@ -329,6 +330,56 @@ __webpack_async_result__();
 
 /***/ }),
 
+/***/ 6907:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "b": () => (/* binding */ getUserInfo),
+/* harmony export */   "h": () => (/* binding */ store)
+/* harmony export */ });
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5184);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9648);
+var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([axios__WEBPACK_IMPORTED_MODULE_1__]);
+axios__WEBPACK_IMPORTED_MODULE_1__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+
+
+const getUserInfo = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("slice/userInfo", async ()=>{
+    const { data: userInfo  } = await axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("/api/userInfo");
+    return userInfo;
+});
+const slice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
+    name: "slice",
+    initialState: {
+        activeLogin: false,
+        loginLink: "/",
+        userInfo: {
+            id: "",
+            email: ""
+        }
+    },
+    reducers: {},
+    extraReducers: (builder)=>{
+        builder.addCase(getUserInfo.fulfilled, (state, action)=>{
+            const { user , loginLink  } = action.payload;
+            if (user) {
+                state.userInfo = user;
+                state.activeLogin = true;
+            }
+            state.loginLink = loginLink;
+        });
+    }
+});
+const store = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.configureStore)(slice);
+
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } });
+
+/***/ }),
+
 /***/ 9605:
 /***/ (() => {
 
@@ -543,7 +594,7 @@ module.exports = import("axios");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [664,443,675,907], () => (__webpack_exec__(5656)));
+var __webpack_exports__ = __webpack_require__.X(0, [664,443,675], () => (__webpack_exec__(5656)));
 module.exports = __webpack_exports__;
 
 })();

@@ -64,6 +64,7 @@ export default function ListInput({
                 onFocus={(e: ChangeEvent<HTMLDivElement>) => {
                   if (e.target.innerHTML !== listText) {
                     e.target.innerHTML = listText;
+                    contentsRef.current?.focus();
                   }
                 }}
                 ref={listTextRef}
@@ -162,7 +163,7 @@ export default function ListInput({
             left: 0;
             width: 100%;
             border: 1px solid white;
-            border-radius: 10px;
+            border-radius: 5px;
             margin-bottom: 20px;
             color: white;
           }

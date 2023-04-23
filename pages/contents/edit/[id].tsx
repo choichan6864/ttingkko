@@ -17,7 +17,6 @@ function WritingPerson() {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
-  const dispatch = useDispatch<any>();
   const router = useRouter();
   const remove = (index: number) => {
     setList((list: { active: boolean; i: number }[]) => {
@@ -52,9 +51,6 @@ function WritingPerson() {
     !list[0] || personName === "" ? e.preventDefault() : null;
   };
   useEffect(() => {
-    dispatch(getUserInfo());
-  }, []);
-  useEffect(() => {
     if (router.query.id)
       (async () => {
         const { data } = await axios.get(`/api/contents/${router.query.id}`);
@@ -82,7 +78,7 @@ function WritingPerson() {
         setList(listArray);
         setContents(array);
       })();
-  }, [router.isReady]);
+  }, [router.isReady, router.query]);
   return (
     <>
       {stateData.login ? (

@@ -96,13 +96,13 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
             plusInput ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "jsx-2542344ed30d5e41" + " " + "element-to-plus",
+                        className: "jsx-c85f246c520f0c29" + " " + "element-to-plus",
                         children: [
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "jsx-2542344ed30d5e41" + " " + "input-group",
+                                className: "jsx-c85f246c520f0c29" + " " + "input-group",
                                 children: [
                                     listText === "" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                        className: "jsx-2542344ed30d5e41" + " " + "list-name-input-placeholder input-placeholder",
+                                        className: "jsx-c85f246c520f0c29" + " " + "list-name-input-placeholder input-placeholder",
                                         children: "추가할 이름"
                                     }) : null,
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -111,21 +111,22 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
                                         onFocus: (e)=>{
                                             if (e.target.innerHTML !== listText) {
                                                 e.target.innerHTML = listText;
+                                                contentsRef.current?.focus();
                                             }
                                         },
                                         ref: listTextRef,
-                                        className: "jsx-2542344ed30d5e41" + " " + "input list-name-input"
+                                        className: "jsx-c85f246c520f0c29" + " " + "input list-name-input"
                                     })
                                 ]
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("hr", {
-                                className: "jsx-2542344ed30d5e41"
+                                className: "jsx-c85f246c520f0c29"
                             }),
                             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                className: "jsx-2542344ed30d5e41" + " " + "input-group",
+                                className: "jsx-c85f246c520f0c29" + " " + "input-group",
                                 children: [
                                     contents === "" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                                        className: "jsx-2542344ed30d5e41" + " " + "input-placeholder contents-input-placeholder ",
+                                        className: "jsx-c85f246c520f0c29" + " " + "input-placeholder contents-input-placeholder ",
                                         children: "내용"
                                     }) : null,
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -138,46 +139,46 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
                                                 listTextRef.current?.focus();
                                             }
                                         },
-                                        className: "jsx-2542344ed30d5e41" + " " + "input content-input"
+                                        className: "jsx-c85f246c520f0c29" + " " + "input content-input"
                                     })
                                 ]
                             })
                         ]
                     }),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                        className: "jsx-2542344ed30d5e41",
+                        className: "jsx-c85f246c520f0c29",
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                 onClick: onClickCancelButton,
                                 type: "button",
-                                className: "jsx-2542344ed30d5e41" + " " + "cancel-button",
+                                className: "jsx-c85f246c520f0c29" + " " + "cancel-button",
                                 children: "취소"
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
                                 onClick: onClickSaveButton,
                                 type: "button",
-                                className: "jsx-2542344ed30d5e41" + " " + "save-button",
+                                className: "jsx-c85f246c520f0c29" + " " + "save-button",
                                 children: "저장"
                             })
                         ]
                     })
                 ]
             }) : /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: "jsx-2542344ed30d5e41" + " " + "list",
+                className: "jsx-c85f246c520f0c29" + " " + "list",
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
-                        className: "jsx-2542344ed30d5e41",
+                        className: "jsx-c85f246c520f0c29",
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                className: "jsx-2542344ed30d5e41",
+                                className: "jsx-c85f246c520f0c29",
                                 children: index + 1
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                className: "jsx-2542344ed30d5e41",
+                                className: "jsx-c85f246c520f0c29",
                                 children: "."
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                                className: "jsx-2542344ed30d5e41" + " " + "listText",
+                                className: "jsx-c85f246c520f0c29" + " " + "listText",
                                 children: listText
                             }),
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_functionButton__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z //삭제 버튼
@@ -200,31 +201,31 @@ function ListInput({ index , remove , Contents , ListText , setListToTrue , setL
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("hr", {
-                        className: "jsx-2542344ed30d5e41"
+                        className: "jsx-c85f246c520f0c29"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                         dangerouslySetInnerHTML: {
                             __html: contents
                         },
-                        className: "jsx-2542344ed30d5e41" + " " + "contents"
+                        className: "jsx-c85f246c520f0c29" + " " + "contents"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         type: "hidden",
                         name: "listText",
                         value: input.listText,
-                        className: "jsx-2542344ed30d5e41"
+                        className: "jsx-c85f246c520f0c29"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         type: "hidden",
                         name: "contents",
                         value: input.contents,
-                        className: "jsx-2542344ed30d5e41"
+                        className: "jsx-c85f246c520f0c29"
                     })
                 ]
             }, index),
             react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-                id: "2542344ed30d5e41",
-                children: ".list-name-input-placeholder.jsx-2542344ed30d5e41{font-size:16px;padding-top:14px}.contents-input-placeholder.jsx-2542344ed30d5e41{font-size:12px;padding-top:7px}.input-placeholder.jsx-2542344ed30d5e41{position:absolute;padding-left:10px;color:rgb(255,255,255,.5)}.input-group.jsx-2542344ed30d5e41{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.input.jsx-2542344ed30d5e41{position:relative;left:0;width:100%;border:1px solid white;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;margin-bottom:20px;color:white}.list-name-input.jsx-2542344ed30d5e41{padding:10px 0 10px 10px;font-size:25px;font-weight:bold}.content-input.jsx-2542344ed30d5e41{padding:5px 0 5px 10px}.element-to-plus.jsx-2542344ed30d5e41{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}hr.jsx-2542344ed30d5e41{border-bottom:1px solid white;margin-bottom:20px}.plus-list-input.jsx-2542344ed30d5e41{padding-left:10px;height:35px;font-size:15px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px}.cancel-button.jsx-2542344ed30d5e41{cursor:pointer;width:5rem;height:35px;color:black;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.save-button.jsx-2542344ed30d5e41{color:black;cursor:pointer;width:5rem;height:35px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.contents.jsx-2542344ed30d5e41{padding-left:1.4rem}.list-group.jsx-2542344ed30d5e41{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.list.jsx-2542344ed30d5e41{margin-bottom:20px}.listText.jsx-2542344ed30d5e41{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}h1.jsx-2542344ed30d5e41{font-size:25px;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:40px;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center}"
+                id: "c85f246c520f0c29",
+                children: ".list-name-input-placeholder.jsx-c85f246c520f0c29{font-size:16px;padding-top:14px}.contents-input-placeholder.jsx-c85f246c520f0c29{font-size:12px;padding-top:7px}.input-placeholder.jsx-c85f246c520f0c29{position:absolute;padding-left:10px;color:rgb(255,255,255,.5)}.input-group.jsx-c85f246c520f0c29{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.input.jsx-c85f246c520f0c29{position:relative;left:0;width:100%;border:1px solid white;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;margin-bottom:20px;color:white}.list-name-input.jsx-c85f246c520f0c29{padding:10px 0 10px 10px;font-size:25px;font-weight:bold}.content-input.jsx-c85f246c520f0c29{padding:5px 0 5px 10px}.element-to-plus.jsx-c85f246c520f0c29{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}hr.jsx-c85f246c520f0c29{border-bottom:1px solid white;margin-bottom:20px}.plus-list-input.jsx-c85f246c520f0c29{padding-left:10px;height:35px;font-size:15px;-webkit-border-radius:8px;-moz-border-radius:8px;border-radius:8px}.cancel-button.jsx-c85f246c520f0c29{cursor:pointer;width:5rem;height:35px;color:black;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.save-button.jsx-c85f246c520f0c29{color:black;cursor:pointer;width:5rem;height:35px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}.contents.jsx-c85f246c520f0c29{padding-left:1.4rem}.list-group.jsx-c85f246c520f0c29{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-moz-box-orient:vertical;-moz-box-direction:normal;-ms-flex-direction:column;flex-direction:column}.list.jsx-c85f246c520f0c29{margin-bottom:20px}.listText.jsx-c85f246c520f0c29{-webkit-box-flex:1;-webkit-flex:1;-moz-box-flex:1;-ms-flex:1;flex:1}h1.jsx-c85f246c520f0c29{font-size:25px;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:40px;-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center}"
             })
         ]
     });

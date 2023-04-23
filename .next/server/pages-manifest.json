@@ -1,6 +1,7 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/admin/plus-notice": "pages/admin/plus-notice.html",
   "/contents/[id]": "pages/contents/[id].html",
   "/contents/edit/[id]": "pages/contents/edit/[id].html",
   "/": "pages/index.html",

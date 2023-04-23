@@ -1,6 +1,5 @@
-import { ChangeEvent, useEffect, useState, ReactElement, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "@/store/store";
+import { ChangeEvent, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function PlusNotice() {
   const [personName, setPersonName] = useState<string>("");
@@ -20,9 +19,9 @@ export default function PlusNotice() {
   const onChangeText = (e: ChangeEvent<HTMLDivElement>) => {
     setText(e.target.innerHTML);
   };
-  const onChangeOpt = (e:ChangeEvent<HTMLSelectElement>) => {
+  const onChangeOpt = (e: ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value);
-  }
+  };
   return (
     <>
       {stateData.login ? (
@@ -59,8 +58,8 @@ export default function PlusNotice() {
             {`
               select {
                 color: black;
-                margin-bottom:20px;
-                height:25px;
+                margin-bottom: 20px;
+                height: 25px;
               }
               option {
                 color: black;

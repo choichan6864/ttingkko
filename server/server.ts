@@ -1,4 +1,4 @@
-import { Application, Request, Response } from "express";
+import { Application, NextFunction, Request, Response } from "express";
 import { NextServer } from "next/dist/server/next";
 
 //라이브러리
@@ -20,6 +20,7 @@ const auth = require("./auth");
 const search = require("./search");
 const userInfo = require("./userInfo");
 const notice = require("./notice");
+const admin = require("./admin");
 const contents = require("./contents");
 
 const sessionStore = new MySQlStore({
@@ -51,10 +52,16 @@ app.prepare().then(() => {
     })
   );
   server.use(express.urlencoded({ extended: true }));
+  server.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    console.error(err.message);
+    res.send({ message: err.message });
+    process.exit(1);
+  });
 
   server.use(auth);
   server.use(search);
   server.use(notice);
+  server.use(admin);
   server.use(contents);
   server.use(userInfo);
 

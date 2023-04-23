@@ -1,5 +1,6 @@
 import { Application, Request, Response } from "express";
 import connection from "./connection";
+import { error } from "console";
 
 const express = require("express");
 const router: Application = express.Router();

@@ -17,6 +17,7 @@ var auth = require("./auth");
 var search = require("./search");
 var userInfo = require("./userInfo");
 var notice = require("./notice");
+var admin = require("./admin");
 var contents = require("./contents");
 var sessionStore = new MySQlStore({
     host: "localhost",
@@ -35,9 +36,15 @@ app.prepare().then(function () {
         name: "ue-if",
     }));
     server.use(express.urlencoded({ extended: true }));
+    server.use(function (err, req, res, next) {
+        console.error(err.message);
+        res.send({ message: err.message });
+        process.exit(1);
+    });
     server.use(auth);
     server.use(search);
     server.use(notice);
+    server.use(admin);
     server.use(contents);
     server.use(userInfo);
     server.get("*", function (req, res) {

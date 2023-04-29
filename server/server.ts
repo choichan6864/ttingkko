@@ -77,9 +77,11 @@ app.prepare().then(() => {
   server.get("*", (req: Request, res: Response) => {
     return handle(req, res);
   });
-  if (port === 443)
+  if (port === 443) {
     createServer(options, server).listen(port);
-  else server.listen(port, () =>{
+    console.log(port);
+  }
+  else server.listen(port, () => {
     console.log(port);
   })
 });

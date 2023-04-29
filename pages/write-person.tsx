@@ -1,49 +1,29 @@
 import { ChangeEvent, useEffect, useState, ReactElement, useRef } from "react";
 import ListInput from "@/components/plusListInput.write";
 import ToolBar from "@/components/toolbar";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-function WritingPerson() {
+export default function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
-  const [list, setList] = useState<{ active: boolean; i: number }[]>([]);
+  const [list, setList] = useState<number[]>([]);
   const stateData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
-  console.log(list);
-  const remove = (index: number) => {
-    setList((list: { active: boolean; i: number }[]) => {
-      return list.filter(
-        (data: { active: boolean; i: number }, i: number) => {
-          return i !== index;
-        }
-      );
-    });
-  };
-  const setListToTrue = (index: number) => {
-    setList((data: any) => {
-      const array = data;
-      array[index] = { active: true, i: index };
-      return array;
-    });
-  };
-  const setListToFalse = (index: number) => {
-    setList((data: any) => {
-      const array = data;
-      array[index] = { active: false, i: index };
-      return array;
-    });
-  };
-  const onClickPlusButton = () => {
-    const index = list.length;
-    setList([...list, { active: false, i: index }]);
-  };
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onClickPlusButton = () =>
+    setList([...list, list.length > 0 ? list[list.length - 1] + 1 : 0]);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     setPersonName(e.target.value);
-  };
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    if (!list[0] || personName === "") {
+    const { listText, contents } = e.target;
+    if (
+      !listText ||
+      !listText.value ||
+      !contents.value ||
+      !contents ||
+      personName === ""
+    ) {
       e.preventDefault();
     }
   };
@@ -59,17 +39,9 @@ function WritingPerson() {
             onChange={onChange}
           ></input>
           <ToolBar onClickPlusButton={onClickPlusButton} />
-          {list.map((data: { active: boolean; i: number }, i: number) => {
+          {list.map((data: number) => {
             return (
-              <ListInput
-                Contents=""
-                ListText=""
-                remove={() => remove(i)}
-                index={i}
-                setListToTrue={() => setListToTrue(i)}
-                setListToFalse={() => setListToFalse(i)}
-                key={data.i}
-              />
+              <ListInput Contents="" ListText="" index={data} key={data} />
             );
           })}
           <style jsx>
@@ -113,8 +85,4 @@ function WritingPerson() {
       ) : null}
     </>
   );
-}
-
-export default function WritePerson() {
-  return <WritingPerson />;
 }

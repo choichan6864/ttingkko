@@ -38,9 +38,11 @@ export default function NavBar() {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
+  const [width, setWidth] = useState(0);
   const setSearchInpToFalse = () => setSearchInp(false);
   useEffect(() => {
     dispatch(getUserInfo());
+    setWidth(window.innerWidth);
   }, []);
   return (
     <>
@@ -48,18 +50,26 @@ export default function NavBar() {
         <nav>
           <Link href={"/"} target="_self" legacyBehavior>
             <a className="logo">
-              <Image width={90} alt="" priority height={90} src="/Image/logo.png"></Image>
+              <Image
+                width={90}
+                alt=""
+                priority
+                height={90}
+                src="/Image/logo.png"
+              ></Image>
             </a>
           </Link>
-          <ul className="link-list">
-            <LinkButton href="/list/1" text="목록" />
-            <LinkButton href="/notice-board/1" text="게시판" />
-            {headerData.login ? (
-              <LinkButton href="/user-info" text="내 정보" />
-            ) : (
-              <LinkButton href={headerData.loginLink} text="로그인" />
-            )}
-          </ul>
+          {width > 767 ? (
+            <ul className="link-list">
+              <LinkButton href="/list/1" text="목록" />
+              <LinkButton href="/notice-board/1" text="게시판" />
+              {headerData.login ? (
+                <LinkButton href="/user-info" text="내 정보" />
+              ) : (
+                <LinkButton href={headerData.loginLink} text="로그인" />
+              )}
+            </ul>
+          ) : null}
           <ul>
             <li className="function-button">
               <button
@@ -131,7 +141,7 @@ export default function NavBar() {
             display: flex;
             height: 100%;
             margin: auto;
-            max-width: 1280px;
+            max-width: 1000px;
           }
           .link-list {
             flex: 1;

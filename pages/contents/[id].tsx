@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "@/store/store";
+import { useSelector } from "react-redux";
 
 export default function Contents() {
   const stateData = useSelector(
@@ -21,7 +20,7 @@ export default function Contents() {
   >([]);
   const router = useRouter();
   useEffect(() => {
-    if (router.query.id)
+    if (router.query.id) 
       (async () => {
         const { data } = await axios.get(`/api/contents/${router.query.id}`);
         const { contents } = data;

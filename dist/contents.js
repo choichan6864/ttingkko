@@ -97,14 +97,18 @@ router.post("/api/edit", function (req, res) {
         res.status(404);
 });
 router.get("/api/contents/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var rows;
+    var page, rows;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, connection_1.default.query("SELECT * FROM contents WHERE contentsId = ".concat(req.params.id))];
+            case 0:
+                page = parseInt(req.params.id);
+                if (!(typeof page === "number" && page > 0)) return [3 /*break*/, 2];
+                return [4 /*yield*/, connection_1.default.query("SELECT * FROM contents WHERE contentsId = ".concat(req.params.id))];
             case 1:
                 rows = (_a.sent())[0];
                 res.status(200).json(rows[0]);
-                return [2 /*return*/];
+                _a.label = 2;
+            case 2: return [2 /*return*/];
         }
     });
 }); });

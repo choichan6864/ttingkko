@@ -3,53 +3,25 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import ListInput from "@/components/plusListInput.write";
 import ToolBar from "@/components/toolbar";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "@/store/store";
+import { useSelector } from "react-redux";
 
-function WritingPerson() {
+export default function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
-  const [list, setList] = useState<{ active: boolean; i: number }[]>([]);
   const [contents, setContents] = useState<
     { contents: string; listText: string }[]
   >([]);
+  const [list, setList] = useState<number[]>([]);
   const stateData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
   const router = useRouter();
-  const remove = (index: number) => {
-    setList((list: { active: boolean; i: number }[]) => {
-      const newList = list.filter(
-        (data: { active: boolean; i: number }, i: number) => {
-          return i !== index;
-        }
-      );
-      return newList;
-    });
-  };
-  const setListToTrue = (index: number) => {
-    setList((data: any) => {
-      const array = data;
-      array[index] = { active: true, i: index };
-      return array;
-    });
-  };
-  const setListToFalse = (index: number) => {
-    setList((data: any) => {
-      const array = data;
-      array[index] = { active: false, i: index };
-      return array;
-    });
-  };
   const onClickPlusButton = () => {
-    const index = list.length;
-    setList([...list, { active: false, i: index }]);
+    setList([...list, !list[0] ? list[list.length - 1] + 1 : 1]);
   };
-  const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    console.log(list);
+  const onSubmit = (e: ChangeEvent<HTMLFormElement>) =>
     !list[0] || personName === "" ? e.preventDefault() : null;
-  };
   useEffect(() => {
     if (router.query.id)
       (async () => {
@@ -65,7 +37,7 @@ function WritingPerson() {
                 listText: contents.listText[index],
                 contents: contents.contents[index],
               });
-              listArray.push({ active: true, i: index });
+              listArray.push(index);
             }
           );
         else {
@@ -73,7 +45,7 @@ function WritingPerson() {
             listText: contents.listText,
             contents: contents.contents,
           });
-          listArray.push({ active: true, i: 0 });
+          listArray.push(0);
         }
         setList(listArray);
         setContents(array);
@@ -86,31 +58,26 @@ function WritingPerson() {
           <h1>{personName}</h1>
           <input type="hidden" name="personName" value={personName} />
           <ToolBar onClickPlusButton={onClickPlusButton} />
-          {list.map((data: { active: boolean; i: number }, i: number) => {
-            return contents.length - 1 >= i ? (
+          {list.map((data: number) => {
+            return contents.length - 1 >= data ? (
               <ListInput
-                Contents={contents[i].contents}
-                ListText={contents[i].listText}
-                remove={() => remove(i)}
-                index={i}
-                setListToTrue={() => setListToTrue(i)}
-                setListToFalse={() => setListToFalse(i)}
-                key={data.i}
+                Contents={contents[data].contents}
+                ListText={contents[data].listText}
+                index={data}
+                key={data}
               />
             ) : (
-              <ListInput
-                Contents=""
-                ListText=""
-                remove={() => remove(i)}
-                index={i}
-                setListToTrue={() => setListToTrue(i)}
-                setListToFalse={() => setListToFalse(i)}
-                key={data.i}
-              />
+              <ListInput Contents="" ListText="" index={data} key={data} />
             );
           })}
-          <style jsx>
-            {`
+          <style jsx>{css}</style>
+        </form>
+      ) : null}
+    </>
+  );
+}
+
+const css = `
               h1 {
                 font-size: 40px;
               }
@@ -144,14 +111,4 @@ function WritingPerson() {
                 flex-direction: column;
                 width: 100%;
               }
-            `}
-          </style>
-        </form>
-      ) : null}
-    </>
-  );
-}
-
-export default function WritePerson() {
-  return <WritingPerson />;
-}
+            `;

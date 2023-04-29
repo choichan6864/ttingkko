@@ -60,10 +60,13 @@ router.post("/api/edit", (req: Request, res: Response) => {
 });
 
 router.get("/api/contents/:id", async (req: Request, res: Response) => {
-  const [rows] = await connection.query(
-    `SELECT * FROM contents WHERE contentsId = ${req.params.id}`
-  );
-  res.status(200).json(rows[0]);
+  const page = parseInt(req.params.id);
+  if (typeof page === "number" && page > 0) {
+    const [rows] = await connection.query(
+      `SELECT * FROM contents WHERE contentsId = ${req.params.id}`
+    );
+    res.status(200).json(rows[0]);
+  }
 });
 
 module.exports = router;

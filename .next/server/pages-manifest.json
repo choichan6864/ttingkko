@@ -1,9 +1,16 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/list/[page]": "pages/list/[page].js",
-  "/notice-board/[page]": "pages/notice-board/[page].js",
-  "/notice/[id]": "pages/notice/[id].js"
+  "/404": "pages/404.html",
+  "/admin/plus-notice": "pages/admin/plus-notice.html",
+  "/contents/[id]": "pages/contents/[id].html",
+  "/contents/edit/[id]": "pages/contents/edit/[id].html",
+  "/": "pages/index.html",
+  "/list/[page]": "pages/list/[page].html",
+  "/notice-board/[page]": "pages/notice-board/[page].html",
+  "/notice/[id]": "pages/notice/[id].html",
+  "/plus-notice": "pages/plus-notice.html",
+  "/user-info": "pages/user-info.html",
+  "/write-person": "pages/write-person.html",
+  "/_document": "pages/_document.js"
 }

@@ -1,17 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var https_1 = require("https");
 //라이브러리
 var dotenv = require("dotenv");
 dotenv.config();
 var express = require("express");
 var next = require("next");
+var fs = require("fs");
 var session = require("express-session");
 var MySQlStore = require("express-mysql-session")(session);
 //서버 세팅
 var dev = process.env.NODE_ENV !== "production";
 var app = next({ dev: dev });
-var port = process.env.NODE_ENV !== "production" ? 3000 : 80;
+var port = process.env.NODE_ENV !== "production" ? 3000 : 443;
 var handle = app.getRequestHandler();
+var options = {
+    cert: fs.readFileSync("./key/certificate.crt"),
+    ca: fs.readFileSync("./key/ca_bundle.crt"),
+    key: fs.readFileSync("./key/private.key")
+};
 //라우터
 var auth = require("./auth");
 var search = require("./search");
@@ -50,7 +57,10 @@ app.prepare().then(function () {
     server.get("*", function (req, res) {
         return handle(req, res);
     });
-    server.listen(port, function () {
-        console.info("port: ".concat(port));
-    });
+    if (port === 443)
+        (0, https_1.createServer)(options, server).listen(port);
+    else
+        server.listen(port, function () {
+            console.log(port);
+        });
 });

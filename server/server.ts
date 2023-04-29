@@ -1,19 +1,28 @@
 import { Application, NextFunction, Request, Response } from "express";
 import { NextServer } from "next/dist/server/next";
+import { createServer } from "https";
+import { FSWatcher } from "fs";
 
 //라이브러리
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const next = require("next");
+const fs = require("fs");
 const session = require("express-session");
 const MySQlStore = require("express-mysql-session")(session);
 
 //서버 세팅
 const dev = process.env.NODE_ENV !== "production";
 const app: NextServer = next({ dev });
-const port = process.env.NODE_ENV !== "production" ? 3000 : 80;
+const port = process.env.NODE_ENV !== "production" ? 3000 : 443;
 const handle = app.getRequestHandler();
+
+const options = {
+  cert: fs.readFileSync("./key/certificate.crt"),
+  ca: fs.readFileSync("./key/ca_bundle.crt"),
+  key: fs.readFileSync("./key/private.key")
+}
 
 //라우터
 const auth = require("./auth");
@@ -68,8 +77,9 @@ app.prepare().then(() => {
   server.get("*", (req: Request, res: Response) => {
     return handle(req, res);
   });
-
-  server.listen(port, () => {
-    console.info(`port: ${port}`);
-  });
+  if (port === 443)
+    createServer(options, server).listen(port);
+  else server.listen(port, () =>{
+    console.log(port);
+  })
 });

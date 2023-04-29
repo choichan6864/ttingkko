@@ -11,6 +11,7 @@ export default function WritingPerson() {
     { contents: string; listText: string }[]
   >([]);
   const [list, setList] = useState<number[]>([]);
+  const [submiting, setSumbiting] = useState<boolean>(false);
   const stateData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
@@ -20,8 +21,16 @@ export default function WritingPerson() {
   const onClickPlusButton = () => {
     setList([...list, !list[0] ? list[list.length - 1] + 1 : 1]);
   };
-  const onSubmit = (e: ChangeEvent<HTMLFormElement>) =>
-    !list[0] || personName === "" ? e.preventDefault() : null;
+  const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    list[0] != 0 ? e.preventDefault() : setSumbiting(true);
+  }
+  useEffect(() => {
+    const onBeforeUnload = (e: any) => {
+      if (!submiting) e.returnValue = true;
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [submiting]);
   useEffect(() => {
     if (router.query.id)
       (async () => {
@@ -70,45 +79,48 @@ export default function WritingPerson() {
               <ListInput Contents="" ListText="" index={data} key={data} />
             );
           })}
-          <style jsx>{css}</style>
+          <style jsx>{
+
+            `
+                          h1 {
+                            font-size: 40px;
+                            margin-bottom:20px;
+                          }
+                          .cancel-button {
+                            cursor: pointer;
+                            width: 5rem;
+                            height: 35px;
+                            color: black;
+                            border-radius: 10px;
+                          }
+                          .save-button {
+                            color: black;
+                            cursor: pointer;
+                            width: 5rem;
+                            height: 35px;
+                            border-radius: 10px;
+                          }
+                          .plus-input {
+                            padding-left: 20px;
+                            height: 50px;
+                            font-size: 20px;
+                            margin-bottom: 20px;
+                            border-radius: 15px;
+                            color: black;
+                          }
+                          input[type="submit"] {
+                            height: 50px;
+                          }
+                          form {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                          }
+                        `
+          }</style>
         </form>
       ) : null}
     </>
   );
 }
 
-const css = `
-              h1 {
-                font-size: 40px;
-              }
-              .cancel-button {
-                cursor: pointer;
-                width: 5rem;
-                height: 35px;
-                color: black;
-                border-radius: 10px;
-              }
-              .save-button {
-                color: black;
-                cursor: pointer;
-                width: 5rem;
-                height: 35px;
-                border-radius: 10px;
-              }
-              .plus-input {
-                padding-left: 20px;
-                height: 50px;
-                font-size: 20px;
-                margin-bottom: 20px;
-                border-radius: 15px;
-                color: black;
-              }
-              input[type="submit"] {
-                height: 50px;
-              }
-              form {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-              }
-            `;

@@ -145,7 +145,7 @@ export default function ListInput({
           <style jsx>{`
             .list-name-input-placeholder {
               font-size: 16px;
-              padding-top: 14px;
+              padding-top: 18px;
             }
             .contents-input-placeholder {
               font-size: 12px;

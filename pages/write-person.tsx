@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState, ReactElement, useRef } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import ListInput from "@/components/plusListInput.write";
 import ToolBar from "@/components/toolbar";
 import { useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 export default function WritingPerson() {
   const [personName, setPersonName] = useState<string>("");
   const [list, setList] = useState<number[]>([]);
+  const [submiting, setSumbiting] = useState<boolean>(false);
   const stateData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
@@ -26,7 +27,16 @@ export default function WritingPerson() {
     ) {
       e.preventDefault();
     }
+    else
+      setSumbiting(true);
   };
+  useEffect(() => {
+    const onBeforeUnload = (e: any) => {
+      if (!submiting) e.returnValue = true;
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [submiting]);
   return (
     <>
       {stateData.login ? (

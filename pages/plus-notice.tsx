@@ -1,10 +1,11 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function PlusNotice() {
   const [personName, setPersonName] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const [submiting, setSumbiting] = useState<boolean>(false);
   const stateData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
@@ -14,7 +15,12 @@ export default function PlusNotice() {
     setPersonName(e.target.value);
   };
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    if (text === "" || personName === "" || type === "") e.preventDefault();
+    if (text === "" || personName === "" || type === "") {
+      e.preventDefault();
+      setSumbiting(false);
+    }
+    else
+      setSumbiting(true);
   };
   const onChangeText = (e: ChangeEvent<HTMLDivElement>) => {
     setText(e.target.innerHTML);
@@ -22,6 +28,13 @@ export default function PlusNotice() {
   const onChangeOpt = (e: ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value);
   };
+  useEffect(() => {
+    const onBeforeUnload = (e: any) => {
+      if (!submiting) e.returnValue = true;
+    }
+    window.addEventListener('beforeunload', onBeforeUnload)
+    return () => window.removeEventListener('beforeunload', onBeforeUnload);
+  }, [submiting]);
   return (
     <>
       {stateData.login ? (

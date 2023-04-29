@@ -30,10 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/write-person": [
+    "/list/[page]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/write-person.js"
+      "static/chunks/pages/list/[page].js"
+    ],
+    "/notice-board/[page]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/notice-board/[page].js"
+    ],
+    "/notice/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/notice/[id].js"
     ]
   },
   "ampFirstPages": []

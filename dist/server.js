@@ -57,8 +57,10 @@ app.prepare().then(function () {
     server.get("*", function (req, res) {
         return handle(req, res);
     });
-    if (port === 443)
+    if (port === 443) {
         (0, https_1.createServer)(options, server).listen(port);
+        console.log(port);
+    }
     else
         server.listen(port, function () {
             console.log(port);

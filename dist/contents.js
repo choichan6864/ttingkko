@@ -50,8 +50,14 @@ router.post("/api/write", function (req, res) {
     else
         res.status(404);
 });
+function fillNum(condition) {
+    var pageLenArr = [];
+    for (var i = 1; i <= condition; i++)
+        pageLenArr.push(i);
+    return pageLenArr;
+}
 router.get("/api/bring-list/:page", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var page, pageLen, len, maxLen, minLen, rows, array_1, pageLenArr, condition, i;
+    var page, pageLen, len, maxLen, minLen, rows, array_1, condition;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -73,11 +79,8 @@ router.get("/api/bring-list/:page", function (req, res) { return __awaiter(void 
                         personName: data.contents.personName,
                     });
                 });
-                pageLenArr = [];
                 condition = len / 20 === 1 ? 1 : len / 20 + 1;
-                for (i = 1; i <= condition; i++)
-                    pageLenArr.push(i);
-                res.status(200).json({ contents: array_1, len: pageLenArr });
+                res.status(200).json({ contents: array_1, len: fillNum(condition) });
                 return [3 /*break*/, 4];
             case 3:
                 res.status(404).send({ ok: false });

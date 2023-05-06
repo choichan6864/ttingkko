@@ -5,7 +5,7 @@ import SearchInput from "./search-input";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInfo } from "@/store/store";
 
-function LinkButton({ href, text }: { href: string; text: string }) {
+function LinkButton({ href, text, padding }: { href: string; text: string, padding?: boolean }) {
   return (
     <li>
       <Link href={href}>
@@ -18,6 +18,7 @@ function LinkButton({ href, text }: { href: string; text: string }) {
             cursor: pointer;
             background-color: rgb(0, 0, 0, 0);
             color: white;
+            ${padding ? 'padding: 20px;' : ''}
             width: 100px;
           }
           li {
@@ -30,19 +31,182 @@ function LinkButton({ href, text }: { href: string; text: string }) {
   );
 }
 
+function LinkList({ headerData, flex }: { headerData: { login: boolean, loginLink: string }, flex?: boolean }) {
+  const [activeSearchInp, setSearchInp] = useState<boolean>(false);
+  const setSearchInpToFalse = () => setSearchInp(false);
+  return (
+    <ul className="link-list">
+      {flex ? <>
+        <li>
+          <input onClick={() => setSearchInp(true)} />
+          <Image
+            width={45}
+            height={45}
+            alt=""
+            src="/search-logo.png"
+            style={{ position: "relative", bottom: "7px", left: "80px" }}
+          ></Image>
+        </li>
+        {activeSearchInp ? <SearchInput event={setSearchInpToFalse} /> : null}
+      </> : null}
+      <LinkButton href="/list/1" text="목록" padding={true} />
+      <LinkButton href="/notice-board/1" text="게시판" padding={true} />
+      {headerData.login ? (
+        <LinkButton href="/user-info" text="내 정보" padding={true} />
+      ) : (
+        <LinkButton href="/api/discord-login" text="로그인" padding={true} />
+      )}
+      <style jsx>
+        {`
+          input {
+            position:absolute;
+            height:30px;
+            width:200px;
+            border-radius:10px;
+          }
+          button {
+            display:flex;
+            height: 100%;
+            cursor: pointer;
+            background-color: rgb(0, 0, 0, 0);
+            color: white;
+          }
+          li {
+            padding-top:20px;
+            justify-content:center;
+            display: inline-flex;
+            height: 100%;
+          }
+          .link-list {
+            flex: 2;
+            ${flex ? 'display:flex;flex-direction:column;text-align:center;' : ''}
+          }
+        `}
+      </style>
+    </ul>
+  )
+}
+
+
+function WriteBtn({ login, mobile }: { login: boolean, mobile?: boolean }) {
+  return <>
+    {login ? (
+      <li>
+        <Link href="/write-person" >
+          <button>
+            <Image
+              width={20}
+              height={20}
+              src="/write-logo.png"
+              alt=""
+            ></Image>
+          </button>
+        </Link>
+        <style jsx>{`
+          li {
+            display:inline-block;
+            ${mobile ? "position:absolute;left:0;" : ""}
+          }
+          button {
+            background-color: rgb(0, 0, 0, 0);
+            height: 90px;
+            width: 4rem;
+            cursor: pointer;
+            color: white;
+          }
+          `}</style>
+      </li>
+    ) : null}
+  </>
+}
+
+function SearchBtnAndWriteBtn({ login }: { login: boolean }) {
+  const [activeSearchInp, setSearchInp] = useState<boolean>(false);
+  const setSearchInpToFalse = () => setSearchInp(false);
+  return <>
+    <ul>
+      <li className="function-button">
+        <button
+          onClick={() => setSearchInp(true)}
+          className="active-search-input"
+        >
+          <Image
+            width={45}
+            height={45}
+            alt=""
+            src="/search-logo.png"
+          ></Image>
+        </button>
+        <WriteBtn login={login} />
+      </li>
+      <style jsx>
+        {`
+          li {
+            display: inline-block;
+          }
+          .active-search-input {
+            height: 90px;
+            width: 4rem;
+            cursor: pointer;
+            background-color: rgb(0, 0, 0, 0);
+          }
+          .function-button {
+            display: flex;
+          }
+      `}
+      </style>
+    </ul>
+    {activeSearchInp ? <SearchInput event={setSearchInpToFalse} /> : null}
+  </>
+}
+
+function MenuBar({ headerData }: { headerData: { login: boolean, loginLink: string } }) {
+  const [bool, setBool] = useState(false);
+  const onClick = () => {
+    setBool(!bool);
+  }
+  return <>
+    {bool ? <ul>
+      <LinkList headerData={headerData} flex={true} />
+    </ul> : null}
+    <button className="menu-bar" onClick={onClick}>
+      <Image src="/Image/menu-bar.png" width={30} height={30} alt=""></Image>
+    </button>
+    <style jsx>
+      {`
+        ul {
+          background-color:rgb(70, 70, 70);
+          width:100%;
+          position:fixed;
+          top:90px;
+        }
+          .menu-bar {
+            background-color: rgb(0, 0, 0, 0);
+            cursor:pointer;
+            position:absolute;
+            right:0;
+            height:90px;
+            width:90px;
+          }
+      `}
+    </style>
+  </>
+}
+
 export default function NavBar() {
   const dispatch = useDispatch<any>();
-  const [activeSearchInp, setSearchInp] = useState<boolean>(false);
   const headerData = useSelector(
     (state: { activeLogin: boolean; loginLink: string }) => {
       return { login: state.activeLogin, loginLink: state.loginLink };
     }
   );
   const [width, setWidth] = useState(0);
-  const setSearchInpToFalse = () => setSearchInp(false);
   useEffect(() => {
     dispatch(getUserInfo());
     setWidth(window.innerWidth);
+    window.addEventListener("resize", (e: any) => {
+      setWidth(window.innerWidth);
+    })
   }, []);
   return (
     <>
@@ -60,71 +224,22 @@ export default function NavBar() {
             </a>
           </Link>
           {width > 767 ? (
-            <ul className="link-list">
-              <LinkButton href="/list/1" text="목록" />
-              <LinkButton href="/notice-board/1" text="게시판" />
-              {headerData.login ? (
-                <LinkButton href="/user-info" text="내 정보" />
-              ) : (
-                <LinkButton href={headerData.loginLink} text="로그인" />
-              )}
-            </ul>
-          ) : null}
-          <ul>
-            <li className="function-button">
-              <button
-                onClick={() => setSearchInp(true)}
-                className="active-search-input"
-              >
-                <Image
-                  width={45}
-                  height={45}
-                  alt=""
-                  src="/search-logo.png"
-                ></Image>
-              </button>
-              {headerData.login ? (
-                <Link href="/write-person">
-                  <button className="write-pesron">
-                    <Image
-                      width={20}
-                      height={20}
-                      src="/write-logo.png"
-                      alt=""
-                    ></Image>
-                  </button>
-                </Link>
-              ) : null}
-            </li>
-          </ul>
-        </nav>
+            <>
+              <LinkList headerData={headerData} />
+              <SearchBtnAndWriteBtn login={headerData.login} />
+            </>
+          ) :
+            <>
+              <MenuBar headerData={headerData} />
+              <WriteBtn login={headerData.login} mobile={true} />
+            </>
+          }
+        </nav >
         <style jsx>{`
-          .write-person {
-            height: 90px;
-            background-color: rgb(0, 0, 0, 0);
-          }
-          .function-button {
-            display: flex;
-          }
-          .active-search-input {
-            height: 90px;
-            width: 4rem;
-            cursor: pointer;
-            background-color: rgb(0, 0, 0, 0);
-          }
           .logo {
             width: 90px;
             height: 90px;
-          }
-          li {
-            display: inline-block;
-          }
-          .write-pesron {
-            height: 90px;
-            width: 4rem;
-            cursor: pointer;
-            color: white;
-            background-color: rgb(0, 0, 0, 0);
+            ${width <= 767 ? "margin:auto;" : ""}
           }
           header {
             height: 90px;
@@ -136,20 +251,14 @@ export default function NavBar() {
             z-index: 5;
             width: 100%;
           }
-
           nav {
             display: flex;
             height: 100%;
             margin: auto;
             max-width: 1000px;
           }
-          .link-list {
-            flex: 1;
-          }
         `}</style>
-      </header>
-
-      {activeSearchInp ? <SearchInput event={setSearchInpToFalse} /> : null}
+      </header >
     </>
   );
 }

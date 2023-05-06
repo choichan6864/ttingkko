@@ -59,6 +59,7 @@ export default function SearchInput({ event }: { event: () => void }) {
             background-color: rgb(0, 0, 0, 0.5);
             width: 100%;
             position: fixed;
+            left:0;
             z-index: 6;
             top: 0;
             height: 100vh;
